@@ -59,7 +59,6 @@ final class CameraViewController: UIViewController {
         print(lastVector)
     }
 
-
     func configureModel() {
         guard let visionModel = try? VNCoreMLModel(for: mobileNet.model) else {
             print("Did not initialize the model from *.mlmodel")
@@ -130,7 +129,8 @@ extension CameraViewController: ProductViewDelegate {
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    @objc fileprivate func updateTimer() {
+    @objc
+    fileprivate func updateTimer() {
         self.shouldTakePhoto = true
     }
 

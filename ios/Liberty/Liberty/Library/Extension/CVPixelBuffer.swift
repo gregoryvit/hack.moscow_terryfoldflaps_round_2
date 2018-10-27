@@ -23,14 +23,14 @@ func resizePixelBuffer(_ srcPixelBuffer: CVPixelBuffer,
         return nil
     }
     let srcBytesPerRow = CVPixelBufferGetBytesPerRow(srcPixelBuffer)
-    let offset = cropY*srcBytesPerRow + cropX*4
+    let offset = cropY * srcBytesPerRow + cropX * 4
     var srcBuffer = vImage_Buffer(data: srcData.advanced(by: offset),
                                   height: vImagePixelCount(cropHeight),
                                   width: vImagePixelCount(cropWidth),
                                   rowBytes: srcBytesPerRow)
 
-    let destBytesPerRow = scaleWidth*4
-    guard let destData = malloc(scaleHeight*destBytesPerRow) else {
+    let destBytesPerRow = scaleWidth * 4
+    guard let destData = malloc(scaleHeight * destBytesPerRow) else {
         print("Error: out of memory")
         return nil
     }

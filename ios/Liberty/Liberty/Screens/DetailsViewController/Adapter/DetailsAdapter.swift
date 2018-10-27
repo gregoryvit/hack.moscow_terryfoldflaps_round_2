@@ -28,6 +28,7 @@ final class DetailsAdapter: NSObject {
     // MARK: - Private Properties
 
     private let tableView: UITableView
+    private var cellTypes: [DetailsTableCellType] = []
 
     // MARK: - Initialization
 
@@ -35,8 +36,15 @@ final class DetailsAdapter: NSObject {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
-//        tableView.registerNib(ChatGroupTableViewCell.self)
+        tableView.registerNib(SoldInStoresCell.self)
         self.tableView = tableView
+    }
+
+    // MARK: - Internal Methods
+
+    func configure(with cellTypes: [DetailsTableCellType]) {
+        self.cellTypes = cellTypes
+        tableView.reloadData()
     }
 
 }
@@ -46,11 +54,17 @@ final class DetailsAdapter: NSObject {
 extension DetailsAdapter: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return cellTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cellType = cellTypes[indexPath.row]
+        switch cellType {
+        case .store(let stores, let title):
+            return soldInStoresCell(for: tableView, indexPath: indexPath, stores: stores, title: title)
+        case .socials(let socials, let title):
+            return soldInStoresCell(for: tableView, indexPath: indexPath, socials: socials, title: title)
+        }
     }
 
 }
@@ -58,5 +72,27 @@ extension DetailsAdapter: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension DetailsAdapter: UITableViewDelegate {
+
+}
+
+// MARK: - Private Methods
+
+private extension DetailsAdapter {
+
+    func soldInStoresCell(for tableView: UITableView, indexPath: IndexPath, stores: [StoreViewModel], title: String) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SoldInStoresCell.nameOfClass, for: indexPath) as? SoldInStoresCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: stores, title: title)
+        return cell
+    }
+
+    func soldInStoresCell(for tableView: UITableView, indexPath: IndexPath, socials: [SocialViewModel], title: String) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SoldInStoresCell.nameOfClass, for: indexPath) as? SoldInStoresCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: socials, title: title)
+        return cell
+    }
 
 }

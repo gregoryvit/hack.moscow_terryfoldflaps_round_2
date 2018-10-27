@@ -37,8 +37,8 @@ extension UIImage {
     }
 
     func centerCrop(size: CGSize) -> UIImage? {
-        return self.crop(rect: CGRect(x: (self.size.width - size.width)/2.0,
-                                      y: (self.size.height - size.height)/2.0,
+        return self.crop(rect: CGRect(x: (self.size.width - size.width) / 2.0,
+                                      y: (self.size.height - size.height) / 2.0,
                                       width: size.width,
                                       height: size.height))
     }
