@@ -27,7 +27,6 @@ final class PersonView: DesignableView {
         static let shadowRadius: CGFloat = 50.0
     }
 
-
     // MARK: - IBOutlets
 
     @IBOutlet private weak var personIconImageView: UIImageView!
