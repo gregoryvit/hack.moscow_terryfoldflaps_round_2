@@ -38,6 +38,7 @@ final class DetailsAdapter: NSObject {
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
         tableView.registerNib(SoldInStoresCell.self)
         tableView.registerNib(PersonCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 21, right: 0)
         self.tableView = tableView
     }
 

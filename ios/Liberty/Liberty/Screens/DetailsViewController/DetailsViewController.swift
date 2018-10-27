@@ -46,6 +46,7 @@ private extension DetailsViewController {
     func setupInitialViewState() {
         configureContainer()
         configureAdapter()
+        configureBlurEffect()
     }
 
     func configureContainer() {
@@ -60,26 +61,27 @@ private extension DetailsViewController {
         tableView.delegate = adapter
     }
 
-//    func configureBlurEffect() {
-//        closeButtonContainer.backgroundColor = UIColor.clear
-//
-//        let blurEffect = UIBlurEffect(style: .light)
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-//
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = closeButtonContainer.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        blurEffectView.contentView.backgroundColor = Constants.blurBackgroundColor
-//
-//        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-//        vibrancyView.frame = view.bounds
-//        vibrancyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//
-//        closeButtonContainer.insertSubview(blurEffectView, at: 0)
-//        blurEffectView.contentView.addSubview(vibrancyView)
-//
-//        closeButtonContainer.layer.cornerRadius = closeButtonContainer.bounds.width / 2
-//    }
+    func configureBlurEffect() {
+        closeButtonContainer.backgroundColor = UIColor.clear
+
+        let blurEffect = UIBlurEffect(style: .light)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = closeButtonContainer.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+
+        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+        vibrancyView.frame = closeButtonContainer.bounds
+        vibrancyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        closeButtonContainer.insertSubview(blurEffectView, at: 0)
+        blurEffectView.contentView.addSubview(vibrancyView)
+
+        closeButtonContainer.layer.cornerRadius = closeButtonContainer.bounds.width / 2
+        closeButtonContainer.layer.masksToBounds = true
+    }
 
 }
 
