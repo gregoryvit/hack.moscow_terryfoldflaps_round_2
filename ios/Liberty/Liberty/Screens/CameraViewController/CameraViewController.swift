@@ -95,6 +95,7 @@ final class CameraViewController: UIViewController {
 
     func configureRateView() {
         let rateView = StarsRateView()
+        rateView.delegate = self
         view.addSubview(rateView)
         rateView.translatesAutoresizingMaskIntoConstraints = false
         rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
@@ -144,6 +145,14 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func retryButtonPressed() {
         print("retry button pressed")
+    }
+
+}
+
+extension CameraViewController: StarsRateViewDelegate {
+
+    func didRateProduct(rating: Double?) {
+        print("Your rating: \(rating ?? 0.0)")
     }
 
 }

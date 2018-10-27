@@ -9,6 +9,10 @@
 import UIKit
 import Cosmos
 
+protocol StarsRateViewDelegate: class {
+    func didRateProduct(rating: Double?)
+}
+
 final class StarsRateView: DesignableView {
 
     // MARK: - Constants
@@ -26,6 +30,14 @@ final class StarsRateView: DesignableView {
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var rateView: CosmosView!
     @IBOutlet private weak var rateViewContainer: UIView!
+
+    // MARK: - Properties
+
+    weak var delegate: StarsRateViewDelegate?
+
+    // MARK: - Private Properties
+
+    private var didRate: Bool = false
 
     // MARK: - UIView
 
@@ -69,6 +81,21 @@ private extension StarsRateView {
 
     func configureRateView() {
         rateView.rating = 0.0
+        rateView.didFinishTouchingCosmos = { [weak self] _ in
+            guard let `self` = self else { return }
+            self.didRate = true
+        }
+    }
+
+}
+
+// MARK: - Actions
+
+private extension StarsRateView {
+
+    @IBAction func backButtonPressed(_ sender: Any) {
+        let rating = didRate ? rateView.rating : nil
+        delegate?.didRateProduct(rating: rating)
     }
 
 }

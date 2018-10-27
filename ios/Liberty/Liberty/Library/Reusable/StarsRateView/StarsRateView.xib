@@ -32,6 +32,9 @@
                             </constraints>
                             <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="backButton"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="G5P-KE-gAZ"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-0W-ylk" customClass="CosmosView" customModule="Cosmos">
                             <rect key="frame" x="52" y="12" width="200" height="35"/>
