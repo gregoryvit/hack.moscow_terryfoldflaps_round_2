@@ -14,6 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+//        let fakeView = FakeViewController()
+//        if let currentWindow = UIApplication.shared.delegate?.window {
+//            currentWindow?.rootViewController = fakeView
+//        }
+
+
         return true
     }
 }
