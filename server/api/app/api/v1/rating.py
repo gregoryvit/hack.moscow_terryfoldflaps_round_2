@@ -6,7 +6,7 @@ from . import api
 
 
 @api.route("/rating", methods=['POST'])
-def search():
+def rating():
     data = request.data
     data_dict = json.loads(data)
 
