@@ -24,6 +24,8 @@ final class CameraViewController: UIViewController {
     private var timer: Timer? = nil
 
     private var currentItemView: UIView?
+    private var currentRateView: StarsRateView?
+    private var currentRating: Double?
     private var isItemActive: Bool {
         return currentItemView != nil
     }
@@ -99,13 +101,16 @@ final class CameraViewController: UIViewController {
         personView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
-    func configureRateView() {
+    func configureRateView() -> StarsRateView {
         let rateView = StarsRateView()
         rateView.delegate = self
+        rateView.configure(rating: currentRating)
         view.addSubview(rateView)
+        let offset = UIScreen.main.bounds.width
         rateView.translatesAutoresizingMaskIntoConstraints = false
-        rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -95).isActive = true
+        rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset).isActive = true
+        return rateView
     }
 
     func setupCamera() {
@@ -147,7 +152,13 @@ final class CameraViewController: UIViewController {
 extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func rateButtonPressed() {
-        print("rate button pressed")
+        currentRateView = configureRateView()
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let `self` = self else { return }
+            let offset = UIScreen.main.bounds.width
+            self.currentItemView?.transform = CGAffineTransform(translationX: -offset, y: 0.0)
+            self.currentRateView?.transform = CGAffineTransform(translationX: -offset, y: 0.0)
+        }
     }
 
     func retryButtonPressed() {
@@ -159,7 +170,13 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 extension CameraViewController: StarsRateViewDelegate {
 
     func didRateProduct(rating: Double?) {
-        print("Your rating: \(rating ?? 0.0)")
+        currentRating = rating != nil ? rating : currentRating
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let `self` = self else { return }
+            let offset = UIScreen.main.bounds.width
+            self.currentItemView?.transform = CGAffineTransform(translationX: 0.0, y: 0.0)
+            self.currentRateView?.transform = CGAffineTransform(translationX: offset, y: 0.0)
+        }
     }
 
 }
@@ -248,6 +265,8 @@ private extension CameraViewController {
         }) { [weak self] (_) in
             currentView.removeFromSuperview()
             self?.currentItemView = nil
+            self?.currentRating = nil
+            self?.currentRateView = nil
         }
     }
 
