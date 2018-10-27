@@ -454,7 +454,7 @@ def search():
         result = products[best_product_id]
         result["accuracy"] = accuracy
     else:
-        abort(500)
+        abort(404, message="Product not found")
 
     return jsonify({
         "result": result

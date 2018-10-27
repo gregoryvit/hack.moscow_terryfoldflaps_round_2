@@ -10,6 +10,40 @@
   ],
   "basePath": "/v1/",
   "paths": {
+    "/rating": {
+      "post": {
+        "summary": "Rate product",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Rating info",
+            "schema": {
+              "type": "object",
+              "required": [
+                "userName"
+              ],
+              "properties": {
+                "product_id": {
+                  "type": "string"
+                },
+                "rating": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rate created"
+          }
+        }
+      }
+    },
     "/search": {
       "post": {
         "summary": "Search",
@@ -19,11 +53,15 @@
         ],
         "parameters": [
           {
-            "required": false,
+            "required": true,
             "schema": {
               "type": "object",
               "example": {
-                "vec": "[0.1, 0.2, 0.4]"
+                "vec": [
+                  0.1,
+                  0.2,
+                  0.4
+                ]
               }
             },
             "in": "body",
