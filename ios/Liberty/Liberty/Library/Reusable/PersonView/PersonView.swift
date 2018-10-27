@@ -9,6 +9,10 @@
 import UIKit
 import AlamofireImage
 
+protocol PersonViewDelegate: class {
+    func retryButtonPressed()
+}
+
 final class PersonView: DesignableView {
 
     // MARK: - Constants
@@ -31,6 +35,10 @@ final class PersonView: DesignableView {
     @IBOutlet private weak var personName: UILabel!
     @IBOutlet private weak var personPosition: UILabel!
     @IBOutlet private weak var retryButton: UIButton!
+
+    // MAKR: - Properties
+
+    weak var delegate: PersonViewDelegate?
 
     // MARK: - UIView
 
@@ -117,6 +125,7 @@ private extension PersonView {
 private extension PersonView {
 
     @IBAction func retryButtonDidPressed(_ sender: Any) {
+        delegate?.retryButtonPressed()
     }
 
 }

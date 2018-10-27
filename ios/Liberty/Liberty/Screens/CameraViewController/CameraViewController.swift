@@ -86,6 +86,7 @@ final class CameraViewController: UIViewController {
         let viewModel = PersonViewModel(personName: "Grigory Berngardt", personPosition: "iOS Lead", personIconUrl: "https://pp.userapi.com/c638619/v638619546/510ff/dzyIBJ927_s.jpg")
         let personView = PersonView()
         personView.configure(viewModel: viewModel)
+        personView.delegate = self
         view.addSubview(personView)
         personView.translatesAutoresizingMaskIntoConstraints = false
         personView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
@@ -127,7 +128,7 @@ final class CameraViewController: UIViewController {
     }
 }
 
-extension CameraViewController: ProductViewDelegate {
+extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func rateButtonPressed() {
         print("rate button pressed")
