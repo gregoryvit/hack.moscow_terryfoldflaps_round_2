@@ -26,4 +26,14 @@ extension UIButton {
         setTitleColor(color, for: .highlighted)
     }
 
+    func setRoundedStyleButton() {
+        layer.borderColor = ColorName.blueTheme.cgColor
+        layer.borderWidth = 1
+        layer.cornerRadius = bounds.height / 2
+        layer.masksToBounds = true
+        titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        setTitleColor(ColorName.blueTheme, for: .normal)
+        setTitlePressState(ColorName.blueTheme.withAlphaComponent(0.6))
+    }
+
 }

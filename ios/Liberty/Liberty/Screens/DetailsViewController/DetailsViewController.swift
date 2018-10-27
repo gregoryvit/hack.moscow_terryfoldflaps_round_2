@@ -34,7 +34,8 @@ class DetailsViewController: UIViewController {
         let zeroCell: DetailsTableCellType = .person(generateTestPerson())
         let firstCell: DetailsTableCellType = .store(generateTestStores(), "Продается в магазинах")
         let secondCell: DetailsTableCellType = .social(generateTestSocials(), "Социальные сети")
-        adapter?.configure(with: [zeroCell, firstCell, secondCell])
+        let thirdCell: DetailsTableCellType = .makeFriends
+        adapter?.configure(with: [zeroCell, firstCell, secondCell, thirdCell])
     }
 
 }
