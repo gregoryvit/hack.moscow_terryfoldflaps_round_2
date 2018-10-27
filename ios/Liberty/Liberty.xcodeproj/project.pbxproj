@@ -167,11 +167,19 @@
 		7402B8492184BDD000C0A543 /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				7402B8502184D33F00C0A543 /* StoreCollectionViewCell */,
 				7402B84A2184BDF500C0A543 /* SoldInStoresCellAdapter.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		7402B8502184D33F00C0A543 /* StoreCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
 				7402B84C2184C10400C0A543 /* StoreCollectionViewCell.swift */,
 				7402B84D2184C10400C0A543 /* StoreCollectionViewCell.xib */,
 			);
-			path = Adapter;
+			path = StoreCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		741B45E821838B9D007FCE12 = {

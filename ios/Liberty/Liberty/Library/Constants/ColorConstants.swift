@@ -20,4 +20,5 @@ struct ColorName {
 //    static let emptyProgress = UIColor(displayP3Red: 159/255.0, green: 166/255.0, blue: 171/255.0, alpha: 1.0)
 
     static let loaderColor = UIColor(displayP3Red: 16 / 255.0, green: 140 / 255.0, blue: 255 / 255.0, alpha: 1)
+    static let grayBorder = UIColor(red: 209 / 255.0, green: 209 / 255.0, blue: 209 / 255.0, alpha: 1)
 }
