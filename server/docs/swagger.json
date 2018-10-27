@@ -10,29 +10,21 @@
   ],
   "basePath": "/v1/",
   "paths": {
-    "/test": {
-      "get": {
-        "tags": [
-          "test"
-        ],
-        "summary": "Test method",
+    "/search": {
+      "post": {
+        "summary": "Search",
         "description": "Initial api method. Returns",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "type": "string",
-            "default": "123456",
-            "name": "apiKey",
-            "required": false,
-            "in": "query"
-          },
-          {
             "required": false,
             "schema": {
-              "type": "string",
-              "default": "{\n\"value\": \"val\"\n}"
+              "type": "object",
+              "example": {
+                "vec": "[0.1, 0.2, 0.4]"
+              }
             },
             "in": "body",
             "name": "body"
@@ -40,7 +32,119 @@
         ],
         "responses": {
           "default": {
-            "description": "no response description was provided for this operation"
+            "description": "Success response",
+            "examples": {
+              "result": {
+                "id": "book/1",
+                "type": "book",
+                "title": "Создавая и ломая сетку",
+                "author": "Тимоти Самара",
+                "average_price": 2465,
+                "currency": "₽",
+                "rating": 4.5,
+                "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1000233363.jpg",
+                "details": [
+                  {
+                    "type": "stores",
+                    "title": "Продается в магазинах",
+                    "stores": [
+                      {
+                        "id": 1,
+                        "name": "Ozon.ru",
+                        "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1000233363.jpg",
+                        "average_price": 2465,
+                        "currency": "₽",
+                        "lat": 42.123,
+                        "lon": 32.123,
+                        "delivery_available": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "best_review",
+                    "title": "Лучший отзыв",
+                    "review": [
+                      {
+                        "id": 1,
+                        "author": "Костик Ртуть",
+                        "source": "ozon.ru",
+                        "summary": "На редкость элегантное издание Тэффи. Приятные на ощупь белые плотные страницы. Хорошая подборка рассказов. Замечательно и остроумно. Книга небольшая, на вечер-другой, но выполнена очень приятно, если сомневаетесь, брать ли — хочу развеять ваши сомнения. Своих денег стоит."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "similar_book",
+                    "title": "Похожие книги",
+                    "books": [
+                      {
+                        "id": "book/2",
+                        "type": "book",
+                        "title": "Гормоны счастья. Приучите свой мозг вырабатывать",
+                        "author": "Бройнинг Лоретта Грациано",
+                        "average_price": 2465,
+                        "currency": "₽",
+                        "rating": 4.5,
+                        "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1000233363.jpg"
+                      },
+                      {
+                        "id": "book/3",
+                        "type": "book",
+                        "title": "Дизайн привычных вещей",
+                        "author": "Норман Дональд",
+                        "average_price": 2465,
+                        "currency": "₽",
+                        "rating": 4.5,
+                        "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1000233363.jpg"
+                      },
+                      {
+                        "id": "book/4",
+                        "type": "book",
+                        "title": "Психология искусства",
+                        "author": "Иржи Кулка",
+                        "average_price": 2465,
+                        "currency": "₽",
+                        "rating": 4.5,
+                        "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1000233363.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "person_social_networks",
+                    "title": "Социальные сети",
+                    "social_networks": [
+                      {
+                        "id": 1,
+                        "name": "Twitter",
+                        "img_url": "https://vignette.wikia.nocookie.net/simpsons/images/1/11/Twitter_bird_icon.png",
+                        "url": "https://twitter.com"
+                      },
+                      {
+                        "id": 2,
+                        "name": "Instagram",
+                        "img_url": "https://vignette.wikia.nocookie.net/riverdalearchie/images/a/a5/Instagram_icon.png",
+                        "url": "https://instagram.com"
+                      },
+                      {
+                        "id": 3,
+                        "name": "Facebook",
+                        "img_url": "http://www.transparentpng.com/thumb/facebook-logo-png/download-facebook-logo-png-18.png",
+                        "url": "https://facebook.com"
+                      },
+                      {
+                        "id": 4,
+                        "name": "VK",
+                        "img_url": "https://cryptocurrency.tech/wp-content/uploads/2017/08/vk.png",
+                        "url": "https://vk.com"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "type": "string",
+              "default": "{\n\"value\": \"val\"\n}"
+            }
           }
         }
       }
