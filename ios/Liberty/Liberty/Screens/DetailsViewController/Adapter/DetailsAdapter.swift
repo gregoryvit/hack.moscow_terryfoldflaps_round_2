@@ -38,6 +38,7 @@ final class DetailsAdapter: NSObject {
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
         tableView.registerNib(SoldInStoresCell.self)
         tableView.registerNib(PersonCell.self)
+        tableView.registerNib(MakeFriendsCell.self)
         tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 21, right: 0)
         self.tableView = tableView
     }
@@ -68,6 +69,8 @@ extension DetailsAdapter: UITableViewDataSource {
             return soldInStoresCell(for: tableView, indexPath: indexPath, socials: socials, title: title)
         case .person(let person):
             return personCell(for: tableView, indexPath: indexPath, person: person)
+        case .makeFriends:
+            return makeFriendsCell(for: tableView, indexPath: indexPath)
         }
     }
 
@@ -108,6 +111,13 @@ private extension DetailsAdapter {
             return UITableViewCell()
         }
         cell.configure(with: person)
+        return cell
+    }
+
+    func makeFriendsCell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MakeFriendsCell.nameOfClass, for: indexPath) as? MakeFriendsCell else {
+            return UITableViewCell()
+        }
         return cell
     }
 

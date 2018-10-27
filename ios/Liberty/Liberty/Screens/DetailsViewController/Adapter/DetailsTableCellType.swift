@@ -12,4 +12,5 @@ enum DetailsTableCellType {
     case store([StoreViewModel], String)
     case social([SocialViewModel], String)
     case person(PersonDetailsViewModel)
+    case makeFriends
 }
