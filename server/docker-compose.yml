@@ -1,0 +1,29 @@
+version: '2'
+services:
+  nginx:
+      build: ./nginx
+      links:
+          - api:api
+          - swagger:swagger
+      ports:
+          - "80:80"
+      volumes:
+        - ./static:/var/www
+  api:
+      build: ./api
+      links:
+        - mongo:mongo
+      depends_on:
+        - mongo
+      environment:
+        - DB_HOST=db
+  mongo:
+      image: mongo:latest
+      volumes:
+        - ./data/db:/data/db
+  swagger:
+      image: swaggerapi/swagger-ui
+      volumes:
+        - ./docs:/var/docs
+      environment:
+        - SWAGGER_JSON=/var/docs/swagger.json

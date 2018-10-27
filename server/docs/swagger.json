@@ -1,0 +1,49 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "liberty app api",
+    "version": "v1.0"
+  },
+  "host": "api.cuddlingkittens.tech",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/v1/",
+  "paths": {
+    "/test": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "summary": "Test method",
+        "description": "Initial api method. Returns",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "default": "123456",
+            "name": "apiKey",
+            "required": false,
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "{\n\"value\": \"val\"\n}"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        }
+      }
+    }
+  }
+}
