@@ -14,4 +14,5 @@ enum DetailsTableCellType {
     case person(PersonDetailsViewModel)
     case makeFriends
     case bestReview(ReviewViewModel)
+    case similarBooks([SimilarBookViewModel], String)
 }
