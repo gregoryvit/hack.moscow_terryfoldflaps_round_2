@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Lead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVe-DA-cps">
-                        <rect key="frame" x="102" y="62" width="178" height="17"/>
+                        <rect key="frame" x="102" y="63" width="178" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="meo-12-vnO"/>
                         </constraints>
@@ -85,10 +85,18 @@
                     <constraint firstItem="WvH-2x-L3w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kTG-1F-VUd"/>
                     <constraint firstItem="RhM-0g-hvl" firstAttribute="top" secondItem="dVK-Wo-zEn" secondAttribute="bottom" id="nZ1-uW-AzQ"/>
                     <constraint firstAttribute="trailing" secondItem="mVe-DA-cps" secondAttribute="trailing" constant="40" id="qr6-Ln-3lF"/>
-                    <constraint firstItem="mVe-DA-cps" firstAttribute="top" secondItem="RhM-0g-hvl" secondAttribute="bottom" id="vdB-NH-pVC"/>
+                    <constraint firstItem="mVe-DA-cps" firstAttribute="top" secondItem="RhM-0g-hvl" secondAttribute="bottom" constant="1" id="vdB-NH-pVC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarImageView" destination="WvH-2x-L3w" id="RNN-Be-X0C"/>
+                <outlet property="descriptionLabel" destination="u1u-V1-gVo" id="dY0-Ha-4LO"/>
+                <outlet property="nameLabel" destination="dVK-Wo-zEn" id="vbo-4B-hHq"/>
+                <outlet property="positionLabel" destination="mVe-DA-cps" id="EaG-GN-hDW"/>
+                <outlet property="websiteButton" destination="izw-mE-Is0" id="REb-eg-gpH"/>
+                <outlet property="workButton" destination="RhM-0g-hvl" id="5Vm-Z0-8oY"/>
+            </connections>
             <point key="canvasLocation" x="132.80000000000001" y="204.64767616191907"/>
         </tableViewCell>
     </objects>

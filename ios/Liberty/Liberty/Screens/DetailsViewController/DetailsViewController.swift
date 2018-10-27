@@ -30,9 +30,10 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInitialViewState()
+        let zeroCell: DetailsTableCellType = .person(generateTestPerson())
         let firstCell: DetailsTableCellType = .store(generateTestStores(), "Продается в магазинах")
         let secondCell: DetailsTableCellType = .social(generateTestSocials(), "Социальные сети")
-        adapter?.configure(with: [firstCell, secondCell])
+        adapter?.configure(with: [zeroCell, firstCell, secondCell])
     }
 
 }
@@ -94,6 +95,10 @@ private extension DetailsViewController {
         let model3 = SocialViewModel(name: "Facebook", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b4d/qxyrgyBoUag.jpg")
         let model4 = SocialViewModel(name: "Vk", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b5b/xtCAzOXxMEg.jpg")
         return [model1, model2, model3, model4]
+    }
+
+    func generateTestPerson() -> PersonViewModel {
+        return PersonViewModel(avatarUrl: nil, name: "Григорий Бернгардт", work: "Surf Studio", position: "iOS Lead", description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.", website: "berngardt.ru")
     }
 
 }

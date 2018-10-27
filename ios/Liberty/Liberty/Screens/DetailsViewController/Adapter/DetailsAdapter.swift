@@ -37,6 +37,7 @@ final class DetailsAdapter: NSObject {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
         tableView.registerNib(SoldInStoresCell.self)
+        tableView.registerNib(PersonCell.self)
         self.tableView = tableView
     }
 
