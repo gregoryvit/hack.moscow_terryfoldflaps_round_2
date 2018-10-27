@@ -12,16 +12,21 @@ import AVFoundation
 
 final class CameraViewController: UIViewController {
 
-    @IBOutlet fileprivate weak var cameraViewPort: UIView!
+    @IBOutlet private weak var cameraViewPort: UIView!
 
-    fileprivate let mobileNet = LibertyModel()
-    fileprivate var visionRequests = [VNRequest]()
+    private let mobileNet = LibertyModel()
+    private var visionRequests = [VNRequest]()
 
-    fileprivate var cameraSession: AVCaptureSession?
-    fileprivate var videoLayer: AVCaptureVideoPreviewLayer?
+    private var cameraSession: AVCaptureSession?
+    private var videoLayer: AVCaptureVideoPreviewLayer?
 
-    fileprivate var shouldTakePhoto = false
-    fileprivate var timer: Timer? = nil
+    private var shouldTakePhoto = false
+    private var timer: Timer? = nil
+
+    private var currentItemView: UIView?
+    private var isItemActive: Bool {
+        return currentItemView != nil
+    }
 
     var lastVector: [Double] = []
 
@@ -33,10 +38,7 @@ final class CameraViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                     selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
-
+        createTimer()
         setupCamera()
         configureModel()
     }
@@ -64,24 +66,34 @@ final class CameraViewController: UIViewController {
     }
 
     func configureProductView(book: Book) {
-//        let viewModel = ProductViewModel(productName: "Санина индахаус продакшен представляет для вас наш проект", productAuthor: "Влад Крупенько", productPrice: "2 465 ₽", productDescription: "средняя цена", productRating: 4)
+        clearCurrentPresentedView()
         let viewModel = ProductViewModel(with: book)
         let productView = ProductView()
         productView.configure(viewModel: viewModel)
         productView.delegate = self
+        currentItemView = productView
+        productView.alpha = 0.0
         view.addSubview(productView)
+        UIView.animate(withDuration: 0.3) {
+            productView.alpha = 1.0
+        }
         productView.translatesAutoresizingMaskIntoConstraints = false
         productView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         productView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
     func configurePersonView(person: Person) {
-//        let viewModel = PersonViewModel(personName: "Grigory Berngardt", personPosition: "iOS Lead", personIconUrl: "https://pp.userapi.com/c638619/v638619546/510ff/dzyIBJ927_s.jpg")
+        clearCurrentPresentedView()
         let viewModel = PersonViewModel(with: person)
         let personView = PersonView()
         personView.configure(viewModel: viewModel)
         personView.delegate = self
+        personView.alpha = 0.0
+        currentItemView = personView
         view.addSubview(personView)
+        UIView.animate(withDuration: 0.3) {
+            personView.alpha = 1.0
+        }
         personView.translatesAutoresizingMaskIntoConstraints = false
         personView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         personView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -139,7 +151,7 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
     }
 
     func retryButtonPressed() {
-        print("retry button pressed")
+        clearCurrentPresentedView()
     }
 
 }
@@ -156,7 +168,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @objc
     fileprivate func updateTimer() {
-        self.shouldTakePhoto = true
+        self.shouldTakePhoto = !isItemActive
     }
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -221,6 +233,27 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 self.configurePersonView(person: person)
             }
         }
+    }
+
+}
+
+// MARK: - Help Methods
+
+private extension CameraViewController {
+
+    func clearCurrentPresentedView() {
+        guard let currentView = currentItemView else { return }
+        UIView.animate(withDuration: 0.3, animations: {
+            currentView.alpha = 0.0
+        }) { [weak self] (_) in
+            currentView.removeFromSuperview()
+            self?.currentItemView = nil
+        }
+    }
+
+    func createTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
     }
 
 }

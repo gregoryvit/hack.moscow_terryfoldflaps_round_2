@@ -14,7 +14,7 @@ public class NetworkManager {
     // MARK: - Constants
 
     private struct Constants {
-        static let goodAcc: Double = 0.77
+        static let goodAcc: Double = 0.7
     }
 
     fileprivate static let apiRoot = "http://api.cuddlingkittens.tech/v1"
@@ -38,6 +38,7 @@ public class NetworkManager {
                         completion(nil)
                         return
                     }
+                    print("Accyrency: \(acc)")
                     guard let tempResult = res["type"] as? String else {
                         completion(nil)
                         return
