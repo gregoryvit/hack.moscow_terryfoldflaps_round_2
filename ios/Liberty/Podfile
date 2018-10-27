@@ -11,5 +11,6 @@ target 'Liberty' do
     pod 'SwiftyUserDefaults', '~> 3.0'
     pod 'Just'
     pod 'NVActivityIndicatorView'
+    pod 'Cosmos', '~> 17.0'
 
 end
