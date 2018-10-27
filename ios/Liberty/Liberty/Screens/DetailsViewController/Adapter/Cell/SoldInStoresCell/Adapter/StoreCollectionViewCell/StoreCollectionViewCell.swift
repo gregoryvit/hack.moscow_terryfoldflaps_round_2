@@ -39,6 +39,7 @@ final class StoreCollectionViewCell: UICollectionViewCell {
 
     func configure(with model: StoreViewModel) {
         priceLabel.text = model.price
+        iconImageView.contentMode = .scaleAspectFit
         if let _ = model.position {
             let randomDistance = Double(arc4random() % 100) / 10.0
             descriptionLabel.text = String(randomDistance) + "km".localized()
@@ -47,7 +48,19 @@ final class StoreCollectionViewCell: UICollectionViewCell {
             descriptionLabel.text = model.deliveryAvailable ? "delivery".localized() : ""
             arrowImageWidthConstraint.constant = 0
         }
+        iconImageView.image = nil
         if let imageUrl = model.iconUrl, let url = URL(string: imageUrl) {
+            iconImageView.af_setImage(withURL: url)
+        }
+    }
+
+    func configure(with socialModel: SocialViewModel) {
+        iconImageView.contentMode = .center
+        priceLabel.text = socialModel.name
+        descriptionLabel.text = ""
+        arrowImageWidthConstraint.constant = 0
+        iconImageView.image = nil
+        if let imageUrl = socialModel.iconUrl, let url = URL(string: imageUrl) {
             iconImageView.af_setImage(withURL: url)
         }
     }

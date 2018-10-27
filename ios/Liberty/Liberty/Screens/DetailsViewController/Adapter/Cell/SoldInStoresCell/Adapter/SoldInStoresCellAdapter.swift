@@ -130,7 +130,12 @@ private extension SoldInStoresCellAdapter {
     }
 
     func socialCell(for collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let socialCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoreCollectionViewCell.identifier(), for: indexPath) as? StoreCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let social = socials[indexPath.row]
+        socialCell.configure(with: social)
+        return socialCell
     }
 
 }

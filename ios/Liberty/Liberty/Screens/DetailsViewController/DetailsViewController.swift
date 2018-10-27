@@ -31,7 +31,8 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         setupInitialViewState()
         let firstCell: DetailsTableCellType = .store(generateTestStores(), "Продается в магазинах")
-        adapter?.configure(with: [firstCell])
+        let secondCell: DetailsTableCellType = .socials(generateTestSocials(), "Социальные сети")
+        adapter?.configure(with: [firstCell, secondCell])
     }
 
 }
@@ -86,5 +87,13 @@ private extension DetailsViewController {
         let model3 = StoreViewModel(id: "3", name: "", iconUrl: "https://pp.userapi.com/c849324/v849324177/a7fc9/iipk0jdZX0M.jpg", price: "2 832 ₽", position: CLLocationCoordinate2D(latitude: 0, longitude: 0), deliveryAvailable: true)
         return [model1, model2, model3]
     }
-    
+
+    func generateTestSocials() -> [SocialViewModel] {
+        let model1 = SocialViewModel(name: "Twitter", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b54/TnEfxqSiPhs.jpg")
+        let model2 = SocialViewModel(name: "Instagram", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b46/gRJwvj69hMM.jpg")
+        let model3 = SocialViewModel(name: "Facebook", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b4d/qxyrgyBoUag.jpg")
+        let model4 = SocialViewModel(name: "Vk", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b5b/xtCAzOXxMEg.jpg")
+        return [model1, model2, model3, model4]
+    }
+
 }

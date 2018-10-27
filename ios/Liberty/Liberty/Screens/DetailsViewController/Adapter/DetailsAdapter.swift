@@ -46,7 +46,7 @@ final class DetailsAdapter: NSObject {
         self.cellTypes = cellTypes
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - UITableViewDataSource

@@ -28,7 +28,7 @@ final class SoldInStoresCell: UITableViewCell {
 
     // MARK: - Internal Methods
 
-    func configure(with stores:[StoreViewModel], title: String) {
+    func configure(with stores: [StoreViewModel], title: String) {
         adapter?.configure(with: stores)
         titleLabel.text = title
     }

@@ -9,5 +9,11 @@
 import Foundation
 
 final class SocialViewModel {
+    let name: String
+    let iconUrl: String?
 
+    init(name: String, iconUrl: String?) {
+        self.name = name
+        self.iconUrl = iconUrl
+    }
 }
