@@ -50,7 +50,9 @@ class CameraViewController: UIViewController {
     }
 
     func configureProductView() {
+        let viewModel = ProductViewModel(productName: "Санина индахаус продакшен представляет для вас наш проект", productAuthor: "Влад Крупенько", productPrice: "2 465 ₽", productDescription: "средняя цена", productRating: 4)
         let productView = ProductView()
+        productView.configure(viewModel: viewModel)
         view.addSubview(productView)
         productView.translatesAutoresizingMaskIntoConstraints = false
         productView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true

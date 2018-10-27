@@ -15,6 +15,7 @@
                 <outlet property="productDescriptionLabel" destination="KUV-m5-XXv" id="M4v-uw-9SW"/>
                 <outlet property="productPriceLabel" destination="z7y-0G-UWa" id="1fV-Un-Ktr"/>
                 <outlet property="productTitleLabel" destination="pbs-ae-RuG" id="mRh-f6-s05"/>
+                <outlet property="ratingView" destination="Ush-q9-jwG" id="egl-zO-ziW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -38,6 +39,12 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="star_small_active"/>
                                 <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_small"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                    <real key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Создавая и ломая сетку" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbs-ae-RuG">
