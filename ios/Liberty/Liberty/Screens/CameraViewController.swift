@@ -128,7 +128,24 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
 
     func handleMlRequest(request: VNRequest, error: Error?) {
-        
+        if let _ = error {
+            return
+        }
+        guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
+            let vector = observations[0].featureValue.multiArrayValue
+            else {
+                return
+        }
+        print("OBTAINED NEW VECTOR OF LENGTH \(vector.shape)")
+
+//        if let picturesData = self.picturesToFind,
+//            let hyp = VisualSearchEngine.performSearch(of: vector.arrayOfDoubles,
+//                                                       in: picturesData) {
+//            let guessVc = ArtGuessViewController.fromStoryboard()
+//            guessVc.picture = hyp.picture
+//            guessVc.modalPresentationStyle = .overCurrentContext
+//            present(guessVc, animated: true, completion: nil)
+//        }
     }
 }
 
