@@ -112,6 +112,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                               height: image.size.width * fraction)
 
             let crop = image.centerCrop(size: size)
+
             guard let cgCrop = crop?.resize(toSize: CGSize(width: 224, height: 224)).cgImage else {
                 return
             }
