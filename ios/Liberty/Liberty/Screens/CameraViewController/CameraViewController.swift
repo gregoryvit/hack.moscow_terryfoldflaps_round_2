@@ -29,9 +29,6 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureProductView()
-//        configurePersonView()
-        configureRateView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,12 +53,6 @@ final class CameraViewController: UIViewController {
         return .lightContent
     }
 
-    @IBAction func printVector(_ sender: Any) {
-//        NetworkManager.search(vector: lastVector, 
-//        print("===========================")
-//        print(lastVector)
-    }
-
     func configureModel() {
         guard let visionModel = try? VNCoreMLModel(for: mobileNet.model) else {
             print("Did not initialize the model from *.mlmodel")
@@ -72,8 +63,9 @@ final class CameraViewController: UIViewController {
         visionRequests = [rq]
     }
 
-    func configureProductView() {
-        let viewModel = ProductViewModel(productName: "Санина индахаус продакшен представляет для вас наш проект", productAuthor: "Влад Крупенько", productPrice: "2 465 ₽", productDescription: "средняя цена", productRating: 4)
+    func configureProductView(book: Book) {
+//        let viewModel = ProductViewModel(productName: "Санина индахаус продакшен представляет для вас наш проект", productAuthor: "Влад Крупенько", productPrice: "2 465 ₽", productDescription: "средняя цена", productRating: 4)
+        let viewModel = ProductViewModel(with: book)
         let productView = ProductView()
         productView.configure(viewModel: viewModel)
         productView.delegate = self
@@ -83,8 +75,9 @@ final class CameraViewController: UIViewController {
         productView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
-    func configurePersonView() {
-        let viewModel = PersonViewModel(personName: "Grigory Berngardt", personPosition: "iOS Lead", personIconUrl: "https://pp.userapi.com/c638619/v638619546/510ff/dzyIBJ927_s.jpg")
+    func configurePersonView(person: Person) {
+//        let viewModel = PersonViewModel(personName: "Grigory Berngardt", personPosition: "iOS Lead", personIconUrl: "https://pp.userapi.com/c638619/v638619546/510ff/dzyIBJ927_s.jpg")
+        let viewModel = PersonViewModel(with: person)
         let personView = PersonView()
         personView.configure(viewModel: viewModel)
         personView.delegate = self
@@ -127,7 +120,8 @@ final class CameraViewController: UIViewController {
 
         self.cameraSession = session
 
-        DispatchQueue.main.async { [unowned self] in
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
             let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
             videoPreviewLayer.videoGravity = .resizeAspectFill
             videoPreviewLayer.frame = self.cameraViewPort.layer.bounds
@@ -205,8 +199,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
     }
 
-    func handleMlRequest(request: VNRequest, error: Error?) {
-        if let _ = error {
+    func handleMlRequest(request: VNRequest, error: Error?) {        if let _ = error {
             return
         }
         guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
@@ -215,6 +208,19 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 return
         }
         lastVector = vector.arrayOfDoubles
-//        VisualSearchEngine.searchCheck(of: lastVector)
+        startSearchRequest(vector: lastVector)
     }
+
+    func startSearchRequest(vector: [Double]) {
+        VisualSearchEngine.searchCheck(of: vector)
+        NetworkManager.search(vector: lastVector) { [weak self] (result) in
+            guard let `self` = self else { return }
+            if let book = result as? Book {
+                self.configureProductView(book: book)
+            } else if let person = result as? Person {
+                self.configurePersonView(person: person)
+            }
+        }
+    }
+
 }
