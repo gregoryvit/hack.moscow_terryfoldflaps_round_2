@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="Liberty" customModuleProvider="target">
             <connections>
+                <outlet property="closeButtonContainer" destination="Yaa-aj-c2c" id="Aip-Km-Ddj"/>
                 <outlet property="container" destination="31L-M6-bgH" id="s7L-pB-ona"/>
                 <outlet property="tableView" destination="EU8-Ha-nC7" id="fCq-u4-RfB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,20 +29,34 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-Ha-nC7">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="549"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="6"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-aj-c2c">
-                            <rect key="frame" x="270" y="10" width="40" height="40"/>
+                            <rect key="frame" x="267" y="18" width="40" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5V-lt-Iel">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <state key="normal" image="closeIcon"/>
+                                    <connections>
+                                        <action selector="tapOnCloseButton:" destination="-1" eventType="touchUpInside" id="ghv-sO-wqu"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="1W9-Hj-hgA"/>
+                                <constraint firstAttribute="trailing" secondItem="M5V-lt-Iel" secondAttribute="trailing" id="Jjt-M8-m6j"/>
+                                <constraint firstItem="M5V-lt-Iel" firstAttribute="top" secondItem="Yaa-aj-c2c" secondAttribute="top" id="Ufj-zX-aTe"/>
                                 <constraint firstAttribute="width" constant="40" id="ZgN-OF-qEt"/>
+                                <constraint firstItem="M5V-lt-Iel" firstAttribute="leading" secondItem="Yaa-aj-c2c" secondAttribute="leading" id="owL-JJ-XgZ"/>
+                                <constraint firstAttribute="bottom" secondItem="M5V-lt-Iel" secondAttribute="bottom" id="tcn-Gc-SIu"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Yaa-aj-c2c" secondAttribute="trailing" constant="10" id="5eK-4h-yPW"/>
-                        <constraint firstItem="Yaa-aj-c2c" firstAttribute="top" secondItem="31L-M6-bgH" secondAttribute="top" constant="10" id="KbX-x8-LXO"/>
+                        <constraint firstAttribute="trailing" secondItem="Yaa-aj-c2c" secondAttribute="trailing" constant="13" id="5eK-4h-yPW"/>
+                        <constraint firstItem="Yaa-aj-c2c" firstAttribute="top" secondItem="31L-M6-bgH" secondAttribute="top" constant="18" id="KbX-x8-LXO"/>
                         <constraint firstAttribute="trailing" secondItem="EU8-Ha-nC7" secondAttribute="trailing" id="LIX-Hx-ZPE"/>
                         <constraint firstItem="EU8-Ha-nC7" firstAttribute="top" secondItem="31L-M6-bgH" secondAttribute="top" id="f97-qc-pzU"/>
                         <constraint firstItem="EU8-Ha-nC7" firstAttribute="leading" secondItem="31L-M6-bgH" secondAttribute="leading" id="lmc-ao-n2t"/>
@@ -60,4 +75,7 @@
             <point key="canvasLocation" x="131.25" y="153.16901408450704"/>
         </view>
     </objects>
+    <resources>
+        <image name="closeIcon" width="15" height="15"/>
+    </resources>
 </document>

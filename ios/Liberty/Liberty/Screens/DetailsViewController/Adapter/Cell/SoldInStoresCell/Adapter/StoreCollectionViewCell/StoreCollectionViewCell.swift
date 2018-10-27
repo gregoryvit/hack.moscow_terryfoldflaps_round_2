@@ -63,7 +63,7 @@ final class StoreCollectionViewCell: UICollectionViewCell {
         iconImageView.contentMode = .scaleAspectFit
         if let _ = model.position {
             let randomDistance = Double(arc4random() % 100) / 10.0
-            descriptionLabel.text = String(randomDistance) + "km".localized()
+            descriptionLabel.text = String(randomDistance) + " km".localized()
             arrowImageWidthConstraint.constant = Constants.defaultArraoImageWidth
         } else {
             descriptionLabel.text = model.deliveryAvailable ? "delivery".localized() : ""
