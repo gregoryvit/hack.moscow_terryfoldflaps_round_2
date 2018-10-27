@@ -33,7 +33,7 @@
 		7402B8572184E37800C0A543 /* DetailsTableCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B8562184E37800C0A543 /* DetailsTableCellType.swift */; };
 		7402B85B2184F20300C0A543 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B8592184F20300C0A543 /* PersonCell.swift */; };
 		7402B85C2184F20300C0A543 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7402B85A2184F20300C0A543 /* PersonCell.xib */; };
-		7402B85E2184F68100C0A543 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B85D2184F68100C0A543 /* PersonViewModel.swift */; };
+		7402B85E2184F68100C0A543 /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B85D2184F68100C0A543 /* PersonDetailsViewModel.swift */; };
 		741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B45F421838B9D007FCE12 /* AppDelegate.swift */; };
 		741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741B45F821838B9D007FCE12 /* Main.storyboard */; };
 		741B45FC21838BA0007FCE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741B45FB21838BA0007FCE12 /* Assets.xcassets */; };
@@ -84,7 +84,7 @@
 		7402B8562184E37800C0A543 /* DetailsTableCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableCellType.swift; sourceTree = "<group>"; };
 		7402B8592184F20300C0A543 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		7402B85A2184F20300C0A543 /* PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
-		7402B85D2184F68100C0A543 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		7402B85D2184F68100C0A543 /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
 		741B45F121838B9D007FCE12 /* Liberty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liberty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		741B45F421838B9D007FCE12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		741B45F921838B9D007FCE12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			children = (
 				7402B8522184D81200C0A543 /* StoreViewModel.swift */,
 				7402B8542184DD0500C0A543 /* SocialViewModel.swift */,
-				7402B85D2184F68100C0A543 /* PersonViewModel.swift */,
+				7402B85D2184F68100C0A543 /* PersonDetailsViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -574,7 +574,7 @@
 				74FE011F21844B06002FCE5C /* UIView.swift in Sources */,
 				6A59BDC8218491EB007F007B /* UIImage.swift in Sources */,
 				7402B85B2184F20300C0A543 /* PersonCell.swift in Sources */,
-				7402B85E2184F68100C0A543 /* PersonViewModel.swift in Sources */,
+				7402B85E2184F68100C0A543 /* PersonDetailsViewModel.swift in Sources */,
 				7402B8552184DD0500C0A543 /* SocialViewModel.swift in Sources */,
 				7402B84B2184BDF500C0A543 /* SoldInStoresCellAdapter.swift in Sources */,
 				6A59BDD02184AA48007F007B /* Similarity.swift in Sources */,

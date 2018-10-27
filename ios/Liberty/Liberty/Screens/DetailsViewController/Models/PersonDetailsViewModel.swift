@@ -1,5 +1,5 @@
 //
-//  PersonViewModel.swift
+//  PersonDetailsViewModel.swift
 //  Liberty
 //
 //  Created by Vlad Krupenko on 27/10/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PersonViewModel {
+final class PersonDetailsViewModel {
     let avatarUrl: String?
     let name: String
     let work: String

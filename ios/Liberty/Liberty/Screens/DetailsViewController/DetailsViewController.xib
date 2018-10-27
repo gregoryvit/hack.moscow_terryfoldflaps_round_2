@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="Liberty" customModuleProvider="target">
             <connections>
-                <outlet property="closeButton" destination="aRc-p4-evP" id="jAH-OE-R5v"/>
                 <outlet property="container" destination="31L-M6-bgH" id="s7L-pB-ona"/>
                 <outlet property="tableView" destination="EU8-Ha-nC7" id="fCq-u4-RfB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,21 +29,22 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="549"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRc-p4-evP">
-                            <rect key="frame" x="266" y="8" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="tapOnCloseButton:" destination="-1" eventType="touchUpInside" id="jIW-1p-L1x"/>
-                            </connections>
-                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-aj-c2c">
+                            <rect key="frame" x="270" y="10" width="40" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="1W9-Hj-hgA"/>
+                                <constraint firstAttribute="width" constant="40" id="ZgN-OF-qEt"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="aRc-p4-evP" firstAttribute="top" secondItem="31L-M6-bgH" secondAttribute="top" constant="8" id="2Gi-l9-a6X"/>
+                        <constraint firstAttribute="trailing" secondItem="Yaa-aj-c2c" secondAttribute="trailing" constant="10" id="5eK-4h-yPW"/>
+                        <constraint firstItem="Yaa-aj-c2c" firstAttribute="top" secondItem="31L-M6-bgH" secondAttribute="top" constant="10" id="KbX-x8-LXO"/>
                         <constraint firstAttribute="trailing" secondItem="EU8-Ha-nC7" secondAttribute="trailing" id="LIX-Hx-ZPE"/>
                         <constraint firstItem="EU8-Ha-nC7" firstAttribute="top" secondItem="31L-M6-bgH" secondAttribute="top" id="f97-qc-pzU"/>
                         <constraint firstItem="EU8-Ha-nC7" firstAttribute="leading" secondItem="31L-M6-bgH" secondAttribute="leading" id="lmc-ao-n2t"/>
-                        <constraint firstAttribute="trailing" secondItem="aRc-p4-evP" secondAttribute="trailing" constant="8" id="lor-S9-zQl"/>
                         <constraint firstAttribute="bottom" secondItem="EU8-Ha-nC7" secondAttribute="bottom" id="pGe-e5-obZ"/>
                     </constraints>
                 </view>
@@ -56,6 +57,7 @@
                 <constraint firstItem="31L-M6-bgH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yQ8-A8-Wwv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="131.25" y="153.16901408450704"/>
         </view>
     </objects>
 </document>

@@ -102,7 +102,7 @@ private extension DetailsAdapter {
         return cell
     }
 
-    func personCell(for tableView: UITableView, indexPath: IndexPath, person: PersonViewModel) -> UITableViewCell {
+    func personCell(for tableView: UITableView, indexPath: IndexPath, person: PersonDetailsViewModel) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonCell.nameOfClass, for: indexPath) as? PersonCell else {
             return UITableViewCell()
         }

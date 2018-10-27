@@ -28,7 +28,7 @@ class PersonCell: UITableViewCell {
 
     // MARK: - Internal Methods
 
-    func configure(with model: PersonViewModel) {
+    func configure(with model: PersonDetailsViewModel) {
         avatarImageView.image = nil
         if let imageUrl = model.avatarUrl, let url = URL(string: imageUrl) {
             avatarImageView.af_setImage(withURL: url)

@@ -14,6 +14,7 @@ class DetailsViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var closeButtonContainer: UIView!
     @IBOutlet private weak var container: UIView!
     @IBOutlet private weak var tableView: UITableView!
 
@@ -59,6 +60,27 @@ private extension DetailsViewController {
         tableView.delegate = adapter
     }
 
+//    func configureBlurEffect() {
+//        closeButtonContainer.backgroundColor = UIColor.clear
+//
+//        let blurEffect = UIBlurEffect(style: .light)
+//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+//
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = closeButtonContainer.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        blurEffectView.contentView.backgroundColor = Constants.blurBackgroundColor
+//
+//        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+//        vibrancyView.frame = view.bounds
+//        vibrancyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//        closeButtonContainer.insertSubview(blurEffectView, at: 0)
+//        blurEffectView.contentView.addSubview(vibrancyView)
+//
+//        closeButtonContainer.layer.cornerRadius = closeButtonContainer.bounds.width / 2
+//    }
+
 }
 
 // MARK: - Actions
@@ -97,8 +119,8 @@ private extension DetailsViewController {
         return [model1, model2, model3, model4]
     }
 
-    func generateTestPerson() -> PersonViewModel {
-        return PersonViewModel(avatarUrl: nil, name: "Григорий Бернгардт", work: "Surf Studio", position: "iOS Lead", description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.", website: "berngardt.ru")
+    func generateTestPerson() -> PersonDetailsViewModel {
+        return PersonDetailsViewModel(avatarUrl: nil, name: "Григорий Бернгардт", work: "Surf Studio", position: "iOS Lead", description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.", website: "berngardt.ru")
     }
 
 }
