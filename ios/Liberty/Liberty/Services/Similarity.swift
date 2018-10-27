@@ -36,7 +36,7 @@ class EMSimilarity {
     /** Pop the currentSimMode via pop if it won't make the stack empty **/
     func popSimMode() {
         if self.currentSimMode.count > 1 {
-            let _ = self.currentSimMode.popLast()
+            _ = self.currentSimMode.popLast()
         }
     }
 
@@ -56,7 +56,7 @@ class EMSimilarity {
     /** Pop the currentMismatchMode via pop if it won't make the stack empty **/
     func popMismatchMode() {
         if self.currentMismatchMode.count > 1 {
-            let _ = self.currentMismatchMode.popLast()
+            _ = self.currentMismatchMode.popLast()
         }
     }
 
@@ -68,7 +68,7 @@ class EMSimilarity {
     /** Dot Product **/
     private func dot(A: [Double], B: [Double]) -> Double {
         var x: Double = 0
-        for i in 0...A.count-1 {
+        for i in 0...A.count - 1 {
             x += A[i] * B[i]
         }
         return x
@@ -133,7 +133,7 @@ class EMSimilarity {
             return x
         }
 
-        for i in 0...A.count-1 {
+        for i in 0...A.count - 1 {
             if A[i] != B[i] {
                 x += 1
             }
@@ -156,8 +156,7 @@ class EMSimilarity {
         var mode = EMSimilarityMode.Cosine
         if let _mode = self.getCurrentSimMode() {
             mode = _mode
-        }
-        else {
+        } else {
             return -1
         }
 
@@ -182,15 +181,14 @@ class EMSimilarity {
                     let a = A.count < B.count ? A : B
                     let _b = A.count < B.count ? B : A
                     var b = [Double]()
-                    if a.count > 0 {
-                        for i in 0...a.count-1 {
+                    if !a.isEmpty {
+                        for i in 0...a.count - 1 {
                             b.append(_b[i])
                         }
                     }
                     return compute(A: a, B: b)
                 }
-            }
-            else {
+            } else {
                 return -1
             }
         }

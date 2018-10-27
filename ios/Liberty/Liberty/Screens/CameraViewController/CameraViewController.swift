@@ -29,7 +29,8 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureProductView()
+//        configureProductView()
+        configurePersonView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +61,6 @@ final class CameraViewController: UIViewController {
 //        print(lastVector)
     }
 
-
     func configureModel() {
         guard let visionModel = try? VNCoreMLModel(for: mobileNet.model) else {
             print("Did not initialize the model from *.mlmodel")
@@ -80,6 +80,17 @@ final class CameraViewController: UIViewController {
         productView.translatesAutoresizingMaskIntoConstraints = false
         productView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         productView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+
+    func configurePersonView() {
+        let viewModel = PersonViewModel(personName: "Grigory Berngardt", personPosition: "iOS Lead", personIconUrl: "https://pp.userapi.com/c638619/v638619546/510ff/dzyIBJ927_s.jpg")
+        let personView = PersonView()
+        personView.configure(viewModel: viewModel)
+        personView.delegate = self
+        view.addSubview(personView)
+        personView.translatesAutoresizingMaskIntoConstraints = false
+        personView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        personView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
     func setupCamera() {
@@ -117,7 +128,7 @@ final class CameraViewController: UIViewController {
     }
 }
 
-extension CameraViewController: ProductViewDelegate {
+extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func rateButtonPressed() {
         print("rate button pressed")
@@ -131,7 +142,8 @@ extension CameraViewController: ProductViewDelegate {
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    @objc fileprivate func updateTimer() {
+    @objc
+    fileprivate func updateTimer() {
         self.shouldTakePhoto = true
     }
 
