@@ -110,13 +110,13 @@ private extension StoreCollectionViewCell {
     }
 
     func makeSelected() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.2) { [weak self] in
             self?.contentView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }
     }
 
     func makeDeselected() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.2) { [weak self] in
             self?.contentView.transform = .identity
         }
     }

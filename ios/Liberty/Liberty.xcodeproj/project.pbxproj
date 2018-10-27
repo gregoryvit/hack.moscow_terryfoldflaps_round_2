@@ -53,6 +53,9 @@
 		741B46202183AA0D007FCE12 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B461F2183AA0D007FCE12 /* ColorConstants.swift */; };
 		7484F62C21850C2D0060C13E /* MakeFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7484F62A21850C2D0060C13E /* MakeFriendsCell.swift */; };
 		7484F62D21850C2D0060C13E /* MakeFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7484F62B21850C2D0060C13E /* MakeFriendsCell.xib */; };
+		7484F631218511D70060C13E /* BestReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7484F62F218511D70060C13E /* BestReviewCell.swift */; };
+		7484F632218511D70060C13E /* BestReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7484F630218511D70060C13E /* BestReviewCell.xib */; };
+		7484F634218515330060C13E /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7484F633218515330060C13E /* ReviewViewModel.swift */; };
 		74FE011121842F59002FCE5C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74FE010F21842F59002FCE5C /* Localizable.strings */; };
 		74FE011421844451002FCE5C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011321844451002FCE5C /* UILabel.swift */; };
 		74FE0116218445D6002FCE5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE0115218445D6002FCE5C /* String.swift */; };
@@ -120,6 +123,9 @@
 		741BD8F72183D21500A7B6DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		7484F62A21850C2D0060C13E /* MakeFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeFriendsCell.swift; sourceTree = "<group>"; };
 		7484F62B21850C2D0060C13E /* MakeFriendsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeFriendsCell.xib; sourceTree = "<group>"; };
+		7484F62F218511D70060C13E /* BestReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestReviewCell.swift; sourceTree = "<group>"; };
+		7484F630218511D70060C13E /* BestReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BestReviewCell.xib; sourceTree = "<group>"; };
+		7484F633218515330060C13E /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		74FE011021842F59002FCE5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Liberty/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		74FE011221842F64002FCE5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74FE011321844451002FCE5C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 				7484F62921850BF60060C13E /* MakeFriendsCell */,
 				7402B8582184F1C200C0A543 /* PersonCell */,
 				7402B8432184B4D300C0A543 /* SoldInStoresCell */,
+				7484F62E218511BC0060C13E /* BestReviewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				7402B8522184D81200C0A543 /* StoreViewModel.swift */,
 				7402B8542184DD0500C0A543 /* SocialViewModel.swift */,
 				7402B85D2184F68100C0A543 /* PersonDetailsViewModel.swift */,
+				7484F633218515330060C13E /* ReviewViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -423,6 +431,15 @@
 			path = MakeFriendsCell;
 			sourceTree = "<group>";
 		};
+		7484F62E218511BC0060C13E /* BestReviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7484F62F218511D70060C13E /* BestReviewCell.swift */,
+				7484F630218511D70060C13E /* BestReviewCell.xib */,
+			);
+			path = BestReviewCell;
+			sourceTree = "<group>";
+		};
 		804DD92F2184EC0200DAE4F4 /* PersonView */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +561,7 @@
 				741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */,
 				7402B8472184B4F700C0A543 /* SoldInStoresCell.xib in Resources */,
 				7402B8392184A93F00C0A543 /* FakeViewController.xib in Resources */,
+				7484F632218511D70060C13E /* BestReviewCell.xib in Resources */,
 				7402B85C2184F20300C0A543 /* PersonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +651,7 @@
 				7402B85E2184F68100C0A543 /* PersonDetailsViewModel.swift in Sources */,
 				7402B8552184DD0500C0A543 /* SocialViewModel.swift in Sources */,
 				7402B84B2184BDF500C0A543 /* SoldInStoresCellAdapter.swift in Sources */,
+				7484F634218515330060C13E /* ReviewViewModel.swift in Sources */,
 				6A59BDD02184AA48007F007B /* Similarity.swift in Sources */,
 				6A7A714A2184ECE400AD6BA3 /* Networking.swift in Sources */,
 				6A59BDC621848FFD007F007B /* CameraViewController.swift in Sources */,
@@ -642,6 +661,7 @@
 				6A59BDD22184AB69007F007B /* Product.swift in Sources */,
 				7402B84E2184C10400C0A543 /* StoreCollectionViewCell.swift in Sources */,
 				6A59BDCA218498A7007F007B /* LibertyModel.mlmodel in Sources */,
+				7484F631218511D70060C13E /* BestReviewCell.swift in Sources */,
 				804DD9312184EC3000DAE4F4 /* PersonView.swift in Sources */,
 				7402B82E2184958500C0A543 /* LibertyLoader.swift in Sources */,
 				6A7A7158218501C100AD6BA3 /* PersonSocialNetworksContainerBlock.swift in Sources */,

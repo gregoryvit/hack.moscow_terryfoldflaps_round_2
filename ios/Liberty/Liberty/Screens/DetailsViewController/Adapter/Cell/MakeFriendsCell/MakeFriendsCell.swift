@@ -13,14 +13,14 @@ class MakeFriendsCell: UITableViewCell {
     // MARK: - IBOutlets
 
     @IBOutlet private weak var makeFriendsButton: UIButton!
-    
+
     // MARK: - UITableViewCell
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setupInitialState()
     }
-    
+
 }
 
 // MARK: - Configure
