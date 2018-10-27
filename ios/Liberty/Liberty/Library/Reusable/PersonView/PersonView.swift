@@ -12,6 +12,10 @@ final class PersonView: DesignableView {
 
     // MARK: - IBOutlets
 
+    @IBOutlet private weak var personIconImageView: UIImageView!
+    @IBOutlet private weak var personName: UILabel!
+    @IBOutlet private weak var personPosition: UILabel!
+    @IBOutlet private weak var retryButton: UIButton!
 
     // MARK: - UIView
 
@@ -28,6 +32,15 @@ private extension PersonView {
 
     func setupInitialState() {
 
+    }
+
+}
+
+// MARK: - Actions
+
+private extension PersonView {
+
+    @IBAction func retryButtonDidPressed(_ sender: Any) {
     }
 
 }
