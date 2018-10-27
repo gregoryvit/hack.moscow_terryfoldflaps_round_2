@@ -38,7 +38,8 @@ class FakeViewController: UIViewController {
         let reviewCell: DetailsTableCellType = .bestReview(generateTestReview())
         let secondCell: DetailsTableCellType = .social(generateTestSocials(), "Социальные сети")
         let thirdCell: DetailsTableCellType = .makeFriends
-        detailsView.configure(with: [zeroCell, firstCell, reviewCell, secondCell, thirdCell], showChangeProfileButton: true)
+        let booksCell: DetailsTableCellType = .similarBooks(generateTestBooks(), "Похожие книги")
+        detailsView.configure(with: [zeroCell, firstCell, reviewCell, secondCell, thirdCell, booksCell])
 
         present(detailsView, animated: true, completion: nil)
         UIView.animate(withDuration: 0.3) { [weak self] in
@@ -75,4 +76,10 @@ private extension FakeViewController {
         return ReviewViewModel(authorAvatar: nil, authorName: "Костик Ртуть", reviewSource: "ozon.ru", reviewText: "На редкость элегантное издание Тэффи. Приятные на ощупь белые плотные страницы. Хорошая подборка рассказов. Замечательно и остроумно. Книга небольшая, на вечер-другой, но выполнена очень приятно, если сомневаетесь, брать ли — хочу развеять ваши сомнения. Своих денег стоит.")
     }
 
+    func generateTestBooks() -> [SimilarBookViewModel] {
+        let book1 = SimilarBookViewModel(coverImageUrl: nil, name: "Гормоны счастья. Приучите свой мозг вырабатывать что-то там я просто не заню настоящего названия", authorName: "Бройнинг Лоретта Грациано")
+        let book2 = SimilarBookViewModel(coverImageUrl: nil, name: "Дизайн привычных вещей", authorName: "Норман Дональд")
+        let book3 = SimilarBookViewModel(coverImageUrl: nil, name: "Психология искусства", authorName: "Иржи Кулка")
+        return [book1, book2, book3]
+    }
 }
