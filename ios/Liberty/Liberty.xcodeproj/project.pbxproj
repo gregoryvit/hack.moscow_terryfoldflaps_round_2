@@ -22,6 +22,7 @@
 		74FE011421844451002FCE5C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011321844451002FCE5C /* UILabel.swift */; };
 		74FE0116218445D6002FCE5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE0115218445D6002FCE5C /* String.swift */; };
 		74FE011F21844B06002FCE5C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011E21844B06002FCE5C /* UIView.swift */; };
+		804DD9212184D63400DAE4F4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804DD9202184D63400DAE4F4 /* UIButton.swift */; };
 		80C7D83621849DCA00A7F494 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D83521849DCA00A7F494 /* ProductView.swift */; };
 		80C7D83821849DF600A7F494 /* ProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D83721849DF600A7F494 /* ProductView.xib */; };
 		80C7D83A2184B65600A7F494 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D8392184B65600A7F494 /* ProductViewModel.swift */; };
@@ -49,6 +50,7 @@
 		74FE011321844451002FCE5C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		74FE0115218445D6002FCE5C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		74FE011E21844B06002FCE5C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		804DD9202184D63400DAE4F4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		80C7D83521849DCA00A7F494 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		80C7D83721849DF600A7F494 /* ProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductView.xib; sourceTree = "<group>"; };
 		80C7D8392184B65600A7F494 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				741B461A2183A324007FCE12 /* UITableView.swift */,
 				74FE011E21844B06002FCE5C /* UIView.swift */,
 				6A59BDC7218491EB007F007B /* UIImage.swift */,
+				804DD9202184D63400DAE4F4 /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				741B46202183AA0D007FCE12 /* ColorConstants.swift in Sources */,
 				741B46172183A22A007FCE12 /* DesignableView.swift in Sources */,
 				741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */,
+				804DD9212184D63400DAE4F4 /* UIButton.swift in Sources */,
 				741B461D2183A324007FCE12 /* UITableView.swift in Sources */,
 				74FE011421844451002FCE5C /* UILabel.swift in Sources */,
 			);

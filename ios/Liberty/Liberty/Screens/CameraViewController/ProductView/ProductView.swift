@@ -9,6 +9,11 @@
 import UIKit
 import Cosmos
 
+protocol ProductViewDelegate: class {
+    func rateButtonPressed()
+    func retryButtonPressed()
+}
+
 final class ProductView: DesignableView {
 
     // MARK: - Constants
@@ -32,6 +37,10 @@ final class ProductView: DesignableView {
     @IBOutlet private weak var productDescriptionLabel: UILabel!
     @IBOutlet private weak var rateButton: UIButton!
     @IBOutlet private weak var retryButton: UIButton!
+
+    // MARK: - Properties
+
+    weak var delegate: ProductViewDelegate?
 
     // MARK: - UIView
 
@@ -68,6 +77,7 @@ private extension ProductView {
     func setupInitialState() {
         configureContainerView()
         configureLabels()
+        configureButtons()
     }
 
     func configureContainerView() {
@@ -100,6 +110,13 @@ private extension ProductView {
         productDescriptionLabel.text = nil
     }
 
+    func configureButtons() {
+        rateButton.setTitle("ProductView.Buttons.title".localized(), for: .normal)
+        rateButton.setTitleColor(ColorName.blueTheme, for: .normal)
+        rateButton.setTitlePressState(ColorName.blueTheme.withAlphaComponent(0.6))
+        rateButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
+    }
+
 }
 
 // MARK: - Actions
@@ -107,11 +124,11 @@ private extension ProductView {
 private extension ProductView {
 
     @IBAction func rateButtonDidPressed(_ sender: Any) {
-        print("rateButtonDidPressed")
+        delegate?.rateButtonPressed()
     }
 
     @IBAction func retryButtonDidPressed(_ sender: Any) {
-        print("retryButtonDidPressed")
+        delegate?.retryButtonPressed()
     }
 
 }

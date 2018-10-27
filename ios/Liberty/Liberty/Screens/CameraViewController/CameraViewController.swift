@@ -10,7 +10,7 @@ import UIKit
 import Vision
 import AVFoundation
 
-class CameraViewController: UIViewController {
+final class CameraViewController: UIViewController {
 
     @IBOutlet fileprivate weak var cameraViewPort: UIView!
 
@@ -53,10 +53,11 @@ class CameraViewController: UIViewController {
         let viewModel = ProductViewModel(productName: "Санина индахаус продакшен представляет для вас наш проект", productAuthor: "Влад Крупенько", productPrice: "2 465 ₽", productDescription: "средняя цена", productRating: 4)
         let productView = ProductView()
         productView.configure(viewModel: viewModel)
+        productView.delegate = self
         view.addSubview(productView)
         productView.translatesAutoresizingMaskIntoConstraints = false
         productView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        productView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        productView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
     func setupCamera() {
@@ -92,6 +93,18 @@ class CameraViewController: UIViewController {
             self.videoLayer = videoPreviewLayer
         }
     }
+}
+
+extension CameraViewController: ProductViewDelegate {
+
+    func rateButtonPressed() {
+        print("rate button pressed")
+    }
+
+    func retryButtonPressed() {
+        print("retry button pressed")
+    }
+
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
