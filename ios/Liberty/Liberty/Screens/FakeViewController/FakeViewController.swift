@@ -39,7 +39,8 @@ class FakeViewController: UIViewController {
         let secondCell: DetailsTableCellType = .social(generateTestSocials(), "Социальные сети")
         let thirdCell: DetailsTableCellType = .makeFriends
         let booksCell: DetailsTableCellType = .similarBooks(generateTestBooks(), "Похожие книги")
-        detailsView.configure(with: [zeroCell, firstCell, reviewCell, secondCell, thirdCell, booksCell])
+        let changeProfile: DetailsTableCellType = .changeProfile
+        detailsView.configure(with: [zeroCell, firstCell, reviewCell, secondCell, thirdCell, booksCell, changeProfile])
 
         present(detailsView, animated: true, completion: nil)
         UIView.animate(withDuration: 0.3) { [weak self] in

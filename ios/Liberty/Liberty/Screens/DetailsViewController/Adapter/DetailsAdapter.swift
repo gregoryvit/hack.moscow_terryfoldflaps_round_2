@@ -77,6 +77,8 @@ extension DetailsAdapter: UITableViewDataSource {
             return bestReviewCell(for: tableView, indexPath: indexPath, review: review)
         case .similarBooks(let books, let title):
             return similarBooksCell(for: tableView, indexPath: indexPath, books: books, title: title)
+        case .changeProfile:
+            return changeProfileCell(for: tableView, indexPath: indexPath)
         }
     }
 
@@ -124,6 +126,7 @@ private extension DetailsAdapter {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MakeFriendsCell.nameOfClass, for: indexPath) as? MakeFriendsCell else {
             return UITableViewCell()
         }
+        cell.configure(with: "Подружиться во всех соцсетях".localized())
         return cell
     }
 
@@ -140,6 +143,14 @@ private extension DetailsAdapter {
             return UITableViewCell()
         }
         cell.configure(with: books, title: title)
+        return cell
+    }
+
+    func changeProfileCell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MakeFriendsCell.nameOfClass, for: indexPath) as? MakeFriendsCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: "Изменить профиль".localized())
         return cell
     }
 

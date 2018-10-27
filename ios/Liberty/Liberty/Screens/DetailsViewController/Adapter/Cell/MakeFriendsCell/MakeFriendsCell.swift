@@ -21,6 +21,12 @@ class MakeFriendsCell: UITableViewCell {
         setupInitialState()
     }
 
+    // MARK: - Internal Methods
+
+    func configure(with buttonTitle: String) {
+        makeFriendsButton.setTitle(buttonTitle, for: .normal)
+    }
+
 }
 
 // MARK: - Configure
@@ -28,7 +34,6 @@ class MakeFriendsCell: UITableViewCell {
 private extension MakeFriendsCell {
 
     func setupInitialState() {
-        makeFriendsButton.setTitle("Подружиться во всех соцсетях".localized(), for: .normal)
         makeFriendsButton.setRoundedStyleButton()
     }
 
