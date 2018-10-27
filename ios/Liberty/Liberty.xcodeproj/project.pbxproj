@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A59BDC621848FFD007F007B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59BDC521848FFD007F007B /* CameraViewController.swift */; };
+		6A59BDC8218491EB007F007B /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59BDC7218491EB007F007B /* UIImage.swift */; };
 		741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B45F421838B9D007FCE12 /* AppDelegate.swift */; };
-		741B45F721838B9D007FCE12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B45F621838B9D007FCE12 /* ViewController.swift */; };
 		741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741B45F821838B9D007FCE12 /* Main.storyboard */; };
 		741B45FC21838BA0007FCE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741B45FB21838BA0007FCE12 /* Assets.xcassets */; };
 		741B45FF21838BA0007FCE12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741B45FD21838BA0007FCE12 /* LaunchScreen.storyboard */; };
@@ -25,9 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A59BDC521848FFD007F007B /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		6A59BDC7218491EB007F007B /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		741B45F121838B9D007FCE12 /* Liberty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liberty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		741B45F421838B9D007FCE12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		741B45F621838B9D007FCE12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		741B45F921838B9D007FCE12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		741B45FB21838BA0007FCE12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		741B45FE21838BA0007FCE12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,7 +98,6 @@
 				741B460A21839C70007FCE12 /* Resources */,
 				741B46062183952B007FCE12 /* Screens */,
 				741B460B21839C7D007FCE12 /* Services */,
-				741B45F621838B9D007FCE12 /* ViewController.swift */,
 				741B45F821838B9D007FCE12 /* Main.storyboard */,
 				741B460021838BA0007FCE12 /* Info.plist */,
 			);
@@ -106,6 +107,7 @@
 		741B46062183952B007FCE12 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6A59BDC521848FFD007F007B /* CameraViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 				74FE011321844451002FCE5C /* UILabel.swift */,
 				741B461A2183A324007FCE12 /* UITableView.swift */,
 				74FE011E21844B06002FCE5C /* UIView.swift */,
+				6A59BDC7218491EB007F007B /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -349,12 +352,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				74FE011F21844B06002FCE5C /* UIView.swift in Sources */,
+				6A59BDC8218491EB007F007B /* UIImage.swift in Sources */,
+				6A59BDC621848FFD007F007B /* CameraViewController.swift in Sources */,
 				741B461C2183A324007FCE12 /* Foundation.swift in Sources */,
 				74FE0116218445D6002FCE5C /* String.swift in Sources */,
 				741B461B2183A324007FCE12 /* UICollectionView.swift in Sources */,
 				741B46202183AA0D007FCE12 /* ColorConstants.swift in Sources */,
 				741B46172183A22A007FCE12 /* DesignableView.swift in Sources */,
-				741B45F721838B9D007FCE12 /* ViewController.swift in Sources */,
 				741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */,
 				741B461D2183A324007FCE12 /* UITableView.swift in Sources */,
 				74FE011421844451002FCE5C /* UILabel.swift in Sources */,
