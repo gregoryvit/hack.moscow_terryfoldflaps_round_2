@@ -17,26 +17,10 @@
 		741B461C2183A324007FCE12 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B46192183A324007FCE12 /* Foundation.swift */; };
 		741B461D2183A324007FCE12 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B461A2183A324007FCE12 /* UITableView.swift */; };
 		741B46202183AA0D007FCE12 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B461F2183AA0D007FCE12 /* ColorConstants.swift */; };
-		741B46232183AC17007FCE12 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B46222183AC17007FCE12 /* MainTabBarViewController.swift */; };
-		741B46292183ACE4007FCE12 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B46272183ACE4007FCE12 /* ChatViewController.swift */; };
-		741B462A2183ACE4007FCE12 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741B46282183ACE4007FCE12 /* ChatViewController.xib */; };
-		741B462D2183ACF3007FCE12 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B462B2183ACF3007FCE12 /* MainViewController.swift */; };
-		741B462E2183ACF3007FCE12 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741B462C2183ACF3007FCE12 /* MainViewController.xib */; };
-		741B46312183AD08007FCE12 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B462F2183AD08007FCE12 /* ProfileViewController.swift */; };
-		741B46322183AD08007FCE12 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741B46302183AD08007FCE12 /* ProfileViewController.xib */; };
 		74FE011121842F59002FCE5C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74FE010F21842F59002FCE5C /* Localizable.strings */; };
 		74FE011421844451002FCE5C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011321844451002FCE5C /* UILabel.swift */; };
 		74FE0116218445D6002FCE5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE0115218445D6002FCE5C /* String.swift */; };
-		74FE011A21844780002FCE5C /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011821844780002FCE5C /* ChatListViewController.swift */; };
-		74FE011B21844780002FCE5C /* ChatListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74FE011921844780002FCE5C /* ChatListViewController.xib */; };
-		74FE011D218448A7002FCE5C /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011C218448A7002FCE5C /* UINavigationController.swift */; };
 		74FE011F21844B06002FCE5C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011E21844B06002FCE5C /* UIView.swift */; };
-		74FE012121844D94002FCE5C /* ChatListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE012021844D94002FCE5C /* ChatListAdapter.swift */; };
-		74FE012621845106002FCE5C /* ChatGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE012421845106002FCE5C /* ChatGroupTableViewCell.swift */; };
-		74FE012721845106002FCE5C /* ChatGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74FE012521845106002FCE5C /* ChatGroupTableViewCell.xib */; };
-		74FE012A21846441002FCE5C /* ChatListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE012821846441002FCE5C /* ChatListHeaderCell.swift */; };
-		74FE012B21846441002FCE5C /* ChatListHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74FE012921846441002FCE5C /* ChatListHeaderCell.xib */; };
-		74FE012D21846BD6002FCE5C /* ChatListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE012C21846BD6002FCE5C /* ChatListModels.swift */; };
 		D85FDECFFF3AD51A7A89F2B3 /* Pods_Liberty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF66655BF065029524348ED /* Pods_Liberty.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,29 +37,13 @@
 		741B46192183A324007FCE12 /* Foundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		741B461A2183A324007FCE12 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		741B461F2183AA0D007FCE12 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
-		741B46222183AC17007FCE12 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		741B46272183ACE4007FCE12 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		741B46282183ACE4007FCE12 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
-		741B462B2183ACF3007FCE12 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		741B462C2183ACF3007FCE12 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		741B462F2183AD08007FCE12 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		741B46302183AD08007FCE12 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		741BD8F62183D21500A7B6DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		741BD8F72183D21500A7B6DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		74FE011021842F59002FCE5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Liberty/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		74FE011221842F64002FCE5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74FE011321844451002FCE5C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		74FE0115218445D6002FCE5C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		74FE011821844780002FCE5C /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
-		74FE011921844780002FCE5C /* ChatListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListViewController.xib; sourceTree = "<group>"; };
-		74FE011C218448A7002FCE5C /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		74FE011E21844B06002FCE5C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		74FE012021844D94002FCE5C /* ChatListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListAdapter.swift; sourceTree = "<group>"; };
-		74FE012421845106002FCE5C /* ChatGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupTableViewCell.swift; sourceTree = "<group>"; };
-		74FE012521845106002FCE5C /* ChatGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatGroupTableViewCell.xib; sourceTree = "<group>"; };
-		74FE012821846441002FCE5C /* ChatListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListHeaderCell.swift; sourceTree = "<group>"; };
-		74FE012921846441002FCE5C /* ChatListHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListHeaderCell.xib; sourceTree = "<group>"; };
-		74FE012C21846BD6002FCE5C /* ChatListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListModels.swift; sourceTree = "<group>"; };
 		AFEFC6D49975D64E7ED01667 /* Pods-Liberty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liberty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liberty/Pods-Liberty.release.xcconfig"; sourceTree = "<group>"; };
 		B9B32D0B2B072E0D3298D8A9 /* Pods-Liberty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liberty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liberty/Pods-Liberty.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF66655BF065029524348ED /* Pods_Liberty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liberty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,11 +106,6 @@
 		741B46062183952B007FCE12 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				74FE01172184475D002FCE5C /* ChatList */,
-				741B46262183ACC9007FCE12 /* Chat */,
-				741B46252183ACC4007FCE12 /* Main */,
-				741B46212183ABE5007FCE12 /* MainTabBar */,
-				741B46242183ACBE007FCE12 /* Profile */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -199,7 +162,6 @@
 				741B46182183A324007FCE12 /* UICollectionView.swift */,
 				74FE011321844451002FCE5C /* UILabel.swift */,
 				741B461A2183A324007FCE12 /* UITableView.swift */,
-				74FE011C218448A7002FCE5C /* UINavigationController.swift */,
 				74FE011E21844B06002FCE5C /* UIView.swift */,
 			);
 			path = Extension;
@@ -241,72 +203,6 @@
 				741B461F2183AA0D007FCE12 /* ColorConstants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		741B46212183ABE5007FCE12 /* MainTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				741B46222183AC17007FCE12 /* MainTabBarViewController.swift */,
-			);
-			path = MainTabBar;
-			sourceTree = "<group>";
-		};
-		741B46242183ACBE007FCE12 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				741B462F2183AD08007FCE12 /* ProfileViewController.swift */,
-				741B46302183AD08007FCE12 /* ProfileViewController.xib */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		741B46252183ACC4007FCE12 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				741B462B2183ACF3007FCE12 /* MainViewController.swift */,
-				741B462C2183ACF3007FCE12 /* MainViewController.xib */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		741B46262183ACC9007FCE12 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				741B46272183ACE4007FCE12 /* ChatViewController.swift */,
-				741B46282183ACE4007FCE12 /* ChatViewController.xib */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		74FE01172184475D002FCE5C /* ChatList */ = {
-			isa = PBXGroup;
-			children = (
-				74FE012221844E9F002FCE5C /* Adapter */,
-				74FE011821844780002FCE5C /* ChatListViewController.swift */,
-				74FE011921844780002FCE5C /* ChatListViewController.xib */,
-				74FE012C21846BD6002FCE5C /* ChatListModels.swift */,
-			);
-			path = ChatList;
-			sourceTree = "<group>";
-		};
-		74FE012221844E9F002FCE5C /* Adapter */ = {
-			isa = PBXGroup;
-			children = (
-				74FE0123218450D8002FCE5C /* Cell */,
-				74FE012021844D94002FCE5C /* ChatListAdapter.swift */,
-			);
-			path = Adapter;
-			sourceTree = "<group>";
-		};
-		74FE0123218450D8002FCE5C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				74FE012421845106002FCE5C /* ChatGroupTableViewCell.swift */,
-				74FE012521845106002FCE5C /* ChatGroupTableViewCell.xib */,
-				74FE012821846441002FCE5C /* ChatListHeaderCell.swift */,
-				74FE012921846441002FCE5C /* ChatListHeaderCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		C7446888275A7A13DD7EE967 /* Pods */ = {
@@ -379,16 +275,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74FE012B21846441002FCE5C /* ChatListHeaderCell.xib in Resources */,
-				741B46322183AD08007FCE12 /* ProfileViewController.xib in Resources */,
 				741B45FF21838BA0007FCE12 /* LaunchScreen.storyboard in Resources */,
 				741B45FC21838BA0007FCE12 /* Assets.xcassets in Resources */,
-				741B462E2183ACF3007FCE12 /* MainViewController.xib in Resources */,
 				74FE011121842F59002FCE5C /* Localizable.strings in Resources */,
-				741B462A2183ACE4007FCE12 /* ChatViewController.xib in Resources */,
-				74FE011B21844780002FCE5C /* ChatListViewController.xib in Resources */,
 				741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */,
-				74FE012721845106002FCE5C /* ChatGroupTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,23 +351,13 @@
 				74FE011F21844B06002FCE5C /* UIView.swift in Sources */,
 				741B461C2183A324007FCE12 /* Foundation.swift in Sources */,
 				74FE0116218445D6002FCE5C /* String.swift in Sources */,
-				741B46232183AC17007FCE12 /* MainTabBarViewController.swift in Sources */,
 				741B461B2183A324007FCE12 /* UICollectionView.swift in Sources */,
-				74FE011A21844780002FCE5C /* ChatListViewController.swift in Sources */,
-				74FE012121844D94002FCE5C /* ChatListAdapter.swift in Sources */,
 				741B46202183AA0D007FCE12 /* ColorConstants.swift in Sources */,
-				74FE011D218448A7002FCE5C /* UINavigationController.swift in Sources */,
-				74FE012A21846441002FCE5C /* ChatListHeaderCell.swift in Sources */,
 				741B46172183A22A007FCE12 /* DesignableView.swift in Sources */,
 				741B45F721838B9D007FCE12 /* ViewController.swift in Sources */,
-				741B46312183AD08007FCE12 /* ProfileViewController.swift in Sources */,
 				741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */,
-				74FE012621845106002FCE5C /* ChatGroupTableViewCell.swift in Sources */,
-				741B46292183ACE4007FCE12 /* ChatViewController.swift in Sources */,
 				741B461D2183A324007FCE12 /* UITableView.swift in Sources */,
 				74FE011421844451002FCE5C /* UILabel.swift in Sources */,
-				741B462D2183ACF3007FCE12 /* MainViewController.swift in Sources */,
-				74FE012D21846BD6002FCE5C /* ChatListModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
