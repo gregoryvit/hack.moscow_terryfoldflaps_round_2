@@ -179,9 +179,9 @@
 		741B46062183952B007FCE12 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				80C7D83221849D1300A7F494 /* CameraViewController */,
 				7402B83A2184AAE900C0A543 /* DetailsViewController */,
 				7402B8312184A8D900C0A543 /* FakeViewController */,
-				6A59BDC521848FFD007F007B /* CameraViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
