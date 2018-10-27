@@ -37,6 +37,7 @@ final class DetailsAdapter: NSObject {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
         tableView.registerNib(SoldInStoresCell.self)
+        tableView.registerNib(PersonCell.self)
         self.tableView = tableView
     }
 
@@ -62,8 +63,10 @@ extension DetailsAdapter: UITableViewDataSource {
         switch cellType {
         case .store(let stores, let title):
             return soldInStoresCell(for: tableView, indexPath: indexPath, stores: stores, title: title)
-        case .socials(let socials, let title):
+        case .social(let socials, let title):
             return soldInStoresCell(for: tableView, indexPath: indexPath, socials: socials, title: title)
+        case .person(let person):
+            return personCell(for: tableView, indexPath: indexPath, person: person)
         }
     }
 
@@ -72,6 +75,10 @@ extension DetailsAdapter: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension DetailsAdapter: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 
 }
 
@@ -92,6 +99,14 @@ private extension DetailsAdapter {
             return UITableViewCell()
         }
         cell.configure(with: socials, title: title)
+        return cell
+    }
+
+    func personCell(for tableView: UITableView, indexPath: IndexPath, person: PersonViewModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonCell.nameOfClass, for: indexPath) as? PersonCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: person)
         return cell
     }
 
