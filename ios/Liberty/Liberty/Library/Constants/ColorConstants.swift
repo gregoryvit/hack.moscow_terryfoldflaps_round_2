@@ -19,9 +19,10 @@ struct ColorName {
 //    static let pressState = UIColor(displayP3Red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 0.1)
 //    static let emptyProgress = UIColor(displayP3Red: 159/255.0, green: 166/255.0, blue: 171/255.0, alpha: 1.0)
 
-    static let pressState = UIColor(displayP3Red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 0.1)
-    static let emptyProgress = UIColor(displayP3Red: 159/255.0, green: 166/255.0, blue: 171/255.0, alpha: 1.0)
+    static let pressState = UIColor(displayP3Red: 215 / 255.0, green: 215 / 255.0, blue: 215 / 255.0, alpha: 0.1)
+    static let emptyProgress = UIColor(displayP3Red: 159 / 255.0, green: 166 / 255.0, blue: 171 / 255.0, alpha: 1.0)
     static let blueTheme = UIColor(red: 0.12, green: 0.56, blue: 0.97, alpha: 1.0)
-    static let loaderColor = UIColor(displayP3Red: 16/255.0, green: 140/255.0, blue: 255/255.0, alpha: 1)
     static let iconPlaceholder = UIColor(red: 0.84, green: 0.84, blue: 0.84, alpha: 1.0)
+    static let loaderColor = UIColor(displayP3Red: 16 / 255.0, green: 140 / 255.0, blue: 255 / 255.0, alpha: 1)
+    static let grayBorder = UIColor(red: 209 / 255.0, green: 209 / 255.0, blue: 209 / 255.0, alpha: 1)
 }

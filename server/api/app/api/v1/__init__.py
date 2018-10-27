@@ -8,3 +8,6 @@ def treasure_list():
     return jsonify([
         {'key': 'value'}
     ])
+
+
+from .search import *
