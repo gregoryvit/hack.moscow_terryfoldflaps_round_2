@@ -25,6 +25,7 @@ class CameraViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureProductView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +47,14 @@ class CameraViewController: UIViewController {
 
     func configureModel() {
 
+    }
+
+    func configureProductView() {
+        let productView = ProductView()
+        view.addSubview(productView)
+        productView.translatesAutoresizingMaskIntoConstraints = false
+        productView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        productView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
     }
 
     func setupCamera() {

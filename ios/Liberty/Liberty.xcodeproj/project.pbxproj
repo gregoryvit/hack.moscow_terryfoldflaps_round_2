@@ -22,6 +22,8 @@
 		74FE011421844451002FCE5C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011321844451002FCE5C /* UILabel.swift */; };
 		74FE0116218445D6002FCE5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE0115218445D6002FCE5C /* String.swift */; };
 		74FE011F21844B06002FCE5C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011E21844B06002FCE5C /* UIView.swift */; };
+		80C7D83621849DCA00A7F494 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D83521849DCA00A7F494 /* ProductView.swift */; };
+		80C7D83821849DF600A7F494 /* ProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D83721849DF600A7F494 /* ProductView.xib */; };
 		D85FDECFFF3AD51A7A89F2B3 /* Pods_Liberty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF66655BF065029524348ED /* Pods_Liberty.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		74FE011321844451002FCE5C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		74FE0115218445D6002FCE5C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		74FE011E21844B06002FCE5C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		80C7D83521849DCA00A7F494 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		80C7D83721849DF600A7F494 /* ProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductView.xib; sourceTree = "<group>"; };
 		AFEFC6D49975D64E7ED01667 /* Pods-Liberty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liberty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liberty/Pods-Liberty.release.xcconfig"; sourceTree = "<group>"; };
 		B9B32D0B2B072E0D3298D8A9 /* Pods-Liberty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liberty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liberty/Pods-Liberty.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF66655BF065029524348ED /* Pods_Liberty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liberty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +111,7 @@
 		741B46062183952B007FCE12 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				6A59BDC521848FFD007F007B /* CameraViewController.swift */,
+				80C7D83221849D1300A7F494 /* CameraViewController */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -208,6 +212,24 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		80C7D83221849D1300A7F494 /* CameraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80C7D83421849D7F00A7F494 /* ProductView */,
+				6A59BDC521848FFD007F007B /* CameraViewController.swift */,
+			);
+			path = CameraViewController;
+			sourceTree = "<group>";
+		};
+		80C7D83421849D7F00A7F494 /* ProductView */ = {
+			isa = PBXGroup;
+			children = (
+				80C7D83521849DCA00A7F494 /* ProductView.swift */,
+				80C7D83721849DF600A7F494 /* ProductView.xib */,
+			);
+			path = ProductView;
+			sourceTree = "<group>";
+		};
 		C7446888275A7A13DD7EE967 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +303,7 @@
 				741B45FF21838BA0007FCE12 /* LaunchScreen.storyboard in Resources */,
 				741B45FC21838BA0007FCE12 /* Assets.xcassets in Resources */,
 				74FE011121842F59002FCE5C /* Localizable.strings in Resources */,
+				80C7D83821849DF600A7F494 /* ProductView.xib in Resources */,
 				741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +378,7 @@
 				6A59BDC8218491EB007F007B /* UIImage.swift in Sources */,
 				6A59BDC621848FFD007F007B /* CameraViewController.swift in Sources */,
 				741B461C2183A324007FCE12 /* Foundation.swift in Sources */,
+				80C7D83621849DCA00A7F494 /* ProductView.swift in Sources */,
 				74FE0116218445D6002FCE5C /* String.swift in Sources */,
 				741B461B2183A324007FCE12 /* UICollectionView.swift in Sources */,
 				741B46202183AA0D007FCE12 /* ColorConstants.swift in Sources */,
