@@ -100,6 +100,12 @@ extension SoldInStoresCellAdapter: UICollectionViewDataSource {
 
 extension SoldInStoresCellAdapter: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            collectionView.deselectItem(at: indexPath, animated: true)
+        }
+    }
+
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

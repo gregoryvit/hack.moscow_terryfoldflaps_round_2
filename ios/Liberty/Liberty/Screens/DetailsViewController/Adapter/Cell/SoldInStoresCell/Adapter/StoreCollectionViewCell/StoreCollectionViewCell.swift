@@ -23,6 +23,7 @@ final class StoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var highlightedView: UIView!
 
     // MARK: - NSLayoutConstraints
 
@@ -33,6 +34,26 @@ final class StoreCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupInitialState()
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                makeSelected()
+            } else {
+                makeDeselected()
+            }
+        }
+    }
+
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                makeSelected()
+            } else {
+                makeDeselected()
+            }
+        }
     }
 
     // MARK: - Internal Methods
@@ -86,6 +107,18 @@ private extension StoreCollectionViewCell {
     func configureLabels() {
         priceLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         descriptionLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+    }
+
+    func makeSelected() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.contentView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+
+    func makeDeselected() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.contentView.transform = .identity
+        }
     }
 
 }
