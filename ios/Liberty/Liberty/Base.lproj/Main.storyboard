@@ -21,10 +21,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWA-bb-Tk4">
+                                <rect key="frame" x="147" y="607" width="81" height="30"/>
+                                <state key="normal" title="Save vector"/>
+                                <connections>
+                                    <action selector="printVector:" destination="s5w-td-vY9" eventType="touchUpInside" id="yha-T7-LyH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="adZ-mR-fUj" firstAttribute="bottom" secondItem="NWA-bb-Tk4" secondAttribute="bottom" constant="30" id="6Gb-hI-SnS"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="top" secondItem="q4U-0Q-6x2" secondAttribute="top" id="94R-2R-V8P"/>
+                            <constraint firstItem="NWA-bb-Tk4" firstAttribute="centerX" secondItem="adZ-mR-fUj" secondAttribute="centerX" id="HNb-rt-odX"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="leading" secondItem="adZ-mR-fUj" secondAttribute="leading" id="Oe5-5Y-af2"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="bottom" secondItem="adZ-mR-fUj" secondAttribute="bottom" id="PEd-d6-otz"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="trailing" secondItem="adZ-mR-fUj" secondAttribute="trailing" id="kqC-e3-nLD"/>
