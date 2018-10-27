@@ -23,7 +23,6 @@ final class StoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var highlightedView: UIView!
 
     // MARK: - NSLayoutConstraints
 

@@ -9,5 +9,13 @@
 import Foundation
 
 final class SimilarBookViewModel {
-    
+    let coverImageUrl: String?
+    let name: String
+    let authorName: String
+
+    init(coverImageUrl: String?, name: String, authorName: String) {
+        self.coverImageUrl = coverImageUrl
+        self.name = name
+        self.authorName = authorName
+    }
 }

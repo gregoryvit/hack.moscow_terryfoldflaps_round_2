@@ -68,6 +68,7 @@ extension SimilarBookCellAdapter: UICollectionViewDataSource {
         guard let bookCell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarBookCollectionViewCell.identifier(), for: indexPath) as? SimilarBookCollectionViewCell else {
             return UICollectionViewCell()
         }
+        bookCell.configure(with: books[indexPath.row])
         return bookCell
     }
 

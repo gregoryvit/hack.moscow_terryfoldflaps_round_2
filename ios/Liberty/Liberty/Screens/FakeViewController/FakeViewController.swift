@@ -77,9 +77,9 @@ private extension FakeViewController {
     }
 
     func generateTestBooks() -> [SimilarBookViewModel] {
-        let book1 = SimilarBookViewModel()
-        let book2 = SimilarBookViewModel()
-        let book3 = SimilarBookViewModel()
+        let book1 = SimilarBookViewModel(coverImageUrl: nil, name: "Гормоны счастья. Приучите свой мозг вырабатывать что-то там я просто не заню настоящего названия", authorName: "Бройнинг Лоретта Грациано")
+        let book2 = SimilarBookViewModel(coverImageUrl: nil, name: "Дизайн привычных вещей", authorName: "Норман Дональд")
+        let book3 = SimilarBookViewModel(coverImageUrl: nil, name: "Психология искусства", authorName: "Иржи Кулка")
         return [book1, book2, book3]
     }
 }
