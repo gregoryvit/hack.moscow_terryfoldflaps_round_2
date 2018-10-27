@@ -165,6 +165,14 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
         clearCurrentPresentedView()
     }
 
+    func didPressProduct() {
+        print("product did pressed")
+    }
+
+    func didPressPerson() {
+        print("person did pressed")
+    }
+
 }
 
 extension CameraViewController: StarsRateViewDelegate {
