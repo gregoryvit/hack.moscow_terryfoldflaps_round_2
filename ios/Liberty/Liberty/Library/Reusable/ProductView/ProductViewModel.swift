@@ -28,4 +28,13 @@ final class ProductViewModel {
         self.productRating = productRating
     }
 
+    init(with book: Book) {
+        self.productName = book.title
+        self.productAuthor = book.author
+        self.productDescription = "средняя цена"
+        self.productRating = Int(book.rating)
+        let priceString = String(book.averagePrice).formattedGroupingValue
+        self.productPrice = "\(priceString) \(book.currency ?? "")"
+    }
+
 }

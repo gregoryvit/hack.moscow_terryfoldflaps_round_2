@@ -23,7 +23,6 @@ public class PersonSocialNetworksContainerBlock: Block {
     }
 }
 
-
 public class PersonSocialNetwork: Mappable {
     var id: Int!
     var name: String!

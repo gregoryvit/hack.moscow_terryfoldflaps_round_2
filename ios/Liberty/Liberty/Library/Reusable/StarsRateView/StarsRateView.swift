@@ -55,6 +55,12 @@ final class StarsRateView: DesignableView {
         super.init(coder: aDecoder)
     }
 
+    // MARK: - Configure
+
+    func configure(rating: Double?) {
+        rateView.rating = rating ?? 0.0
+    }
+
 }
 
 // MARK: - Configure

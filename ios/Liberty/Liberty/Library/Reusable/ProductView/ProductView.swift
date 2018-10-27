@@ -12,6 +12,7 @@ import Cosmos
 protocol ProductViewDelegate: class {
     func rateButtonPressed()
     func retryButtonPressed()
+    func didPressProduct()
 }
 
 final class ProductView: DesignableView {
@@ -78,6 +79,7 @@ private extension ProductView {
         configureContainerView()
         configureLabels()
         configureButtons()
+        configureTapGesture()
     }
 
     func configureContainerView() {
@@ -117,6 +119,11 @@ private extension ProductView {
         rateButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
     }
 
+    func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        addGestureRecognizer(tapGesture)
+    }
+
 }
 
 // MARK: - Actions
@@ -129,6 +136,11 @@ private extension ProductView {
 
     @IBAction func retryButtonDidPressed(_ sender: Any) {
         delegate?.retryButtonPressed()
+    }
+
+    @objc
+    func didTap() {
+        delegate?.didPressProduct()
     }
 
 }

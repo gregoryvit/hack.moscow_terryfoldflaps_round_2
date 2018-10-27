@@ -9,7 +9,6 @@
 import Foundation
 import ObjectMapper
 
-
 public class StoresBlock: Block {
     var stores: [Store]!
     var title: String!
