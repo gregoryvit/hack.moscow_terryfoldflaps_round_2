@@ -26,6 +26,7 @@ final class CameraViewController: UIViewController {
     private var currentItemView: UIView?
     private var currentRateView: StarsRateView?
     private var currentRating: Double?
+    private var currentValue: Any?
     private var isItemActive: Bool {
         return currentItemView != nil
     }
@@ -166,11 +167,13 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
     }
 
     func didPressProduct() {
-        print("product did pressed")
+        guard let book = currentValue as? Book else { return }
+        print(book.title)
     }
 
     func didPressPerson() {
-        print("person did pressed")
+        guard let person = currentValue as? Person else { return }
+        print(person.name)
     }
 
 }
@@ -252,6 +255,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         VisualSearchEngine.searchCheck(of: vector)
         NetworkManager.search(vector: lastVector) { [weak self] (result) in
             guard let `self` = self else { return }
+            self.currentValue = result
             if let book = result as? Book {
                 self.configureProductView(book: book)
             } else if let person = result as? Person {
