@@ -11,3 +11,4 @@ def treasure_list():
 
 
 from .search import *
+from .rating import *
