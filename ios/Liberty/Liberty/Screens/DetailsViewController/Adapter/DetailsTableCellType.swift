@@ -10,5 +10,6 @@ import Foundation
 
 enum DetailsTableCellType {
     case store([StoreViewModel], String)
-    case socials([SocialViewModel], String)
+    case social([SocialViewModel], String)
+    case person(PersonViewModel)
 }

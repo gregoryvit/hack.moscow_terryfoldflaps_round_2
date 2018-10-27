@@ -31,7 +31,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         setupInitialViewState()
         let firstCell: DetailsTableCellType = .store(generateTestStores(), "Продается в магазинах")
-        let secondCell: DetailsTableCellType = .socials(generateTestSocials(), "Социальные сети")
+        let secondCell: DetailsTableCellType = .social(generateTestSocials(), "Социальные сети")
         adapter?.configure(with: [firstCell, secondCell])
     }
 
