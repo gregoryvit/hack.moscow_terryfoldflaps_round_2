@@ -36,6 +36,10 @@
 		74FE011421844451002FCE5C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011321844451002FCE5C /* UILabel.swift */; };
 		74FE0116218445D6002FCE5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE0115218445D6002FCE5C /* String.swift */; };
 		74FE011F21844B06002FCE5C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE011E21844B06002FCE5C /* UIView.swift */; };
+		804DD9212184D63400DAE4F4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804DD9202184D63400DAE4F4 /* UIButton.swift */; };
+		80C7D83621849DCA00A7F494 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D83521849DCA00A7F494 /* ProductView.swift */; };
+		80C7D83821849DF600A7F494 /* ProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D83721849DF600A7F494 /* ProductView.xib */; };
+		80C7D83A2184B65600A7F494 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D8392184B65600A7F494 /* ProductViewModel.swift */; };
 		D85FDECFFF3AD51A7A89F2B3 /* Pods_Liberty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF66655BF065029524348ED /* Pods_Liberty.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,10 @@
 		74FE011321844451002FCE5C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		74FE0115218445D6002FCE5C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		74FE011E21844B06002FCE5C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		804DD9202184D63400DAE4F4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		80C7D83521849DCA00A7F494 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		80C7D83721849DF600A7F494 /* ProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductView.xib; sourceTree = "<group>"; };
+		80C7D8392184B65600A7F494 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		AFEFC6D49975D64E7ED01667 /* Pods-Liberty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liberty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liberty/Pods-Liberty.release.xcconfig"; sourceTree = "<group>"; };
 		B9B32D0B2B072E0D3298D8A9 /* Pods-Liberty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liberty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liberty/Pods-Liberty.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF66655BF065029524348ED /* Pods_Liberty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liberty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +245,7 @@
 				741B461A2183A324007FCE12 /* UITableView.swift */,
 				74FE011E21844B06002FCE5C /* UIView.swift */,
 				6A59BDC7218491EB007F007B /* UIImage.swift */,
+				804DD9202184D63400DAE4F4 /* UIButton.swift */,
 				6A59BDCB2184A2A9007F007B /* CVPixelBuffer.swift */,
 				6A59BDD32184AE80007F007B /* MLMultiArray.swift */,
 			);
@@ -280,6 +289,25 @@
 				741B461F2183AA0D007FCE12 /* ColorConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		80C7D83221849D1300A7F494 /* CameraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80C7D83421849D7F00A7F494 /* ProductView */,
+				6A59BDC521848FFD007F007B /* CameraViewController.swift */,
+			);
+			path = CameraViewController;
+			sourceTree = "<group>";
+		};
+		80C7D83421849D7F00A7F494 /* ProductView */ = {
+			isa = PBXGroup;
+			children = (
+				80C7D83521849DCA00A7F494 /* ProductView.swift */,
+				80C7D83721849DF600A7F494 /* ProductView.xib */,
+				80C7D8392184B65600A7F494 /* ProductViewModel.swift */,
+			);
+			path = ProductView;
 			sourceTree = "<group>";
 		};
 		C7446888275A7A13DD7EE967 /* Pods */ = {
@@ -357,6 +385,7 @@
 				741B45FC21838BA0007FCE12 /* Assets.xcassets in Resources */,
 				7402B830218495B300C0A543 /* LibertyLoader.xib in Resources */,
 				74FE011121842F59002FCE5C /* Localizable.strings in Resources */,
+				80C7D83821849DF600A7F494 /* ProductView.xib in Resources */,
 				741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */,
 				7402B8392184A93F00C0A543 /* FakeViewController.xib in Resources */,
 			);
@@ -370,15 +399,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Liberty-checkManifestLockResult.txt",
 			);
@@ -392,25 +417,23 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Liberty/Pods-Liberty-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/Just/Just.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Just.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -433,6 +456,8 @@
 				6A59BDD02184AA48007F007B /* Similarity.swift in Sources */,
 				6A59BDC621848FFD007F007B /* CameraViewController.swift in Sources */,
 				741B461C2183A324007FCE12 /* Foundation.swift in Sources */,
+				80C7D83621849DCA00A7F494 /* ProductView.swift in Sources */,
+				80C7D83A2184B65600A7F494 /* ProductViewModel.swift in Sources */,
 				6A59BDD22184AB69007F007B /* Product.swift in Sources */,
 				6A59BDCA218498A7007F007B /* LibertyModel.mlmodel in Sources */,
 				7402B82E2184958500C0A543 /* LibertyLoader.swift in Sources */,
@@ -447,6 +472,7 @@
 				6A59BDD42184AE80007F007B /* MLMultiArray.swift in Sources */,
 				7402B83D2184AAFF00C0A543 /* DetailsViewController.swift in Sources */,
 				741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */,
+				804DD9212184D63400DAE4F4 /* UIButton.swift in Sources */,
 				7402B8382184A93F00C0A543 /* FakeViewController.swift in Sources */,
 				741B461D2183A324007FCE12 /* UITableView.swift in Sources */,
 				74FE011421844451002FCE5C /* UILabel.swift in Sources */,
@@ -612,6 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6Y38HHR5T;
 				INFOPLIST_FILE = Liberty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -631,6 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6Y38HHR5T;
 				INFOPLIST_FILE = Liberty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
