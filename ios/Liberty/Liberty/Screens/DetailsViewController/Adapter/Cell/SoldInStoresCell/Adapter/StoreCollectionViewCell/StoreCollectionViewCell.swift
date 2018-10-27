@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
+import AlamofireImage
 
-class StoreCollectionViewCell: UICollectionViewCell {
+final class StoreCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Constants
 
@@ -31,6 +33,23 @@ class StoreCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupInitialState()
+    }
+
+    // MARK: - Internal Methods
+
+    func configure(with model: StoreViewModel) {
+        priceLabel.text = model.price
+        if let _ = model.position {
+            let randomDistance = Double(arc4random() % 100) / 10.0
+            descriptionLabel.text = String(randomDistance) + "km".localized()
+            arrowImageWidthConstraint.constant = Constants.defaultArraoImageWidth
+        } else {
+            descriptionLabel.text = model.deliveryAvailable ? "delivery".localized() : ""
+            arrowImageWidthConstraint.constant = 0
+        }
+        if let imageUrl = model.iconUrl, let url = URL(string: imageUrl) {
+            iconImageView.af_setImage(withURL: url)
+        }
     }
 
 }

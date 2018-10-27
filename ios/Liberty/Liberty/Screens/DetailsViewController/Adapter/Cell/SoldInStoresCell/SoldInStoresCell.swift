@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class SoldInStoresCell: UITableViewCell {
+final class SoldInStoresCell: UITableViewCell {
 
     // MARK: - IBOutlets
 
@@ -24,10 +25,14 @@ class SoldInStoresCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         scetupInitialState()
+        // TODO: test code
+        adapter?.configure(with: generateTestStores())
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    // MARK: - Internal Methods
+
+    func configure() {
+        
     }
 
 }
@@ -59,4 +64,16 @@ private extension SoldInStoresCell {
 
 extension SoldInStoresCell: SoldInStoresCellAdapterDelegate {
 
+}
+
+// MARK: - Private Methods
+
+private extension SoldInStoresCell {
+
+    func generateTestStores() -> [StoreViewModel] {
+        let model1 = StoreViewModel(id: "1", name: "", iconUrl: "https://pp.userapi.com/c849324/v849324177/a7fbb/NpM3VBu1nL4.jpg", price: "2 465 ₽", position: nil, deliveryAvailable: true)
+        let model2 = StoreViewModel(id: "2", name: "", iconUrl: "https://pp.userapi.com/c849324/v849324177/a7fc2/MbRM76AF4mE.jpg", price: "2 765 ₽", position: CLLocationCoordinate2D(latitude: 0, longitude: 0), deliveryAvailable: true)
+        let model3 = StoreViewModel(id: "3", name: "", iconUrl: "https://pp.userapi.com/c849324/v849324177/a7fc9/iipk0jdZX0M.jpg", price: "2 832 ₽", position: CLLocationCoordinate2D(latitude: 0, longitude: 0), deliveryAvailable: true)
+        return [model1, model2, model3]
+    }
 }

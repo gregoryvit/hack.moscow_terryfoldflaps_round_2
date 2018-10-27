@@ -15,6 +15,11 @@ protocol SoldInStoresCellAdapterDelegate: class {
 
 final class SoldInStoresCellAdapter: NSObject {
 
+    private enum DataType {
+        case store
+        case social
+    }
+
     // MARK: - Constants
 
     private struct Constants {
@@ -31,6 +36,9 @@ final class SoldInStoresCellAdapter: NSObject {
     // MARK: - Private Properties
 
     private let collectionView: UICollectionView
+    private var currentType: DataType = .store
+    private var stores: [StoreViewModel] = []
+    private var socials: [SocialViewModel] = []
 
     // MARK: - Initialization
 
@@ -48,6 +56,20 @@ final class SoldInStoresCellAdapter: NSObject {
         self.collectionView = collectionView
     }
 
+    // MARK: - Internal Methods
+
+    func configure(with stores: [StoreViewModel]) {
+        self.stores = stores
+        currentType = .store
+        collectionView.reloadData()
+    }
+
+    func configure(with socials: [SocialViewModel]) {
+        self.socials = socials
+        currentType = .social
+        collectionView.reloadData()
+    }
+
 }
 
 // MARK: - UICollectionViewDataSource
@@ -55,14 +77,21 @@ final class SoldInStoresCellAdapter: NSObject {
 extension SoldInStoresCellAdapter: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        switch currentType {
+        case .store:
+            return stores.count
+        case .social:
+            return socials.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoreCollectionViewCell.identifier(), for: indexPath) as? StoreCollectionViewCell else {
-            return UICollectionViewCell()
+        switch currentType {
+        case .store:
+            return storeCell(for: collectionView, indexPath: indexPath)
+        case .social:
+            return socialCell(for: collectionView, indexPath: indexPath)
         }
-        return storeCell
     }
 
 }
@@ -83,6 +112,25 @@ extension SoldInStoresCellAdapter: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return Constants.cellOffset
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension SoldInStoresCellAdapter {
+
+    func storeCell(for collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoreCollectionViewCell.identifier(), for: indexPath) as? StoreCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let store = stores[indexPath.row]
+        storeCell.configure(with: store)
+        return storeCell
+    }
+
+    func socialCell(for collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
     }
 
 }
