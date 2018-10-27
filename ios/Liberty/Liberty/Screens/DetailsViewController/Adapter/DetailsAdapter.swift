@@ -39,6 +39,7 @@ final class DetailsAdapter: NSObject {
         tableView.registerNib(SoldInStoresCell.self)
         tableView.registerNib(PersonCell.self)
         tableView.registerNib(MakeFriendsCell.self)
+        tableView.registerNib(BestReviewCell.self)
         tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 21, right: 0)
         self.tableView = tableView
     }
@@ -71,6 +72,8 @@ extension DetailsAdapter: UITableViewDataSource {
             return personCell(for: tableView, indexPath: indexPath, person: person)
         case .makeFriends:
             return makeFriendsCell(for: tableView, indexPath: indexPath)
+        case .bestReview(let review):
+            return bestReviewCell(for: tableView, indexPath: indexPath, review: review)
         }
     }
 
@@ -121,4 +124,11 @@ private extension DetailsAdapter {
         return cell
     }
 
+    func bestReviewCell(for tableView: UITableView, indexPath: IndexPath, review: ReviewViewModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BestReviewCell.nameOfClass, for: indexPath) as? BestReviewCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: review)
+        return cell
+    }
 }

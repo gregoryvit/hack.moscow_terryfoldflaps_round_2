@@ -33,9 +33,10 @@ class DetailsViewController: UIViewController {
         setupInitialViewState()
         let zeroCell: DetailsTableCellType = .person(generateTestPerson())
         let firstCell: DetailsTableCellType = .store(generateTestStores(), "Продается в магазинах")
+        let reviewCell: DetailsTableCellType = .bestReview(generateTestReview())
         let secondCell: DetailsTableCellType = .social(generateTestSocials(), "Социальные сети")
         let thirdCell: DetailsTableCellType = .makeFriends
-        adapter?.configure(with: [zeroCell, firstCell, secondCell, thirdCell])
+        adapter?.configure(with: [zeroCell, firstCell, reviewCell, secondCell, thirdCell])
     }
 
 }
@@ -124,6 +125,10 @@ private extension DetailsViewController {
 
     func generateTestPerson() -> PersonDetailsViewModel {
         return PersonDetailsViewModel(avatarUrl: nil, name: "Григорий Бернгардт", work: "Surf Studio", position: "iOS Lead", description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.", website: "berngardt.ru")
+    }
+
+    func generateTestReview() -> ReviewViewModel {
+        return ReviewViewModel(authorAvatar: nil, authorName: "Костик Ртуть", reviewSource: "ozon.ru", reviewText: "На редкость элегантное издание Тэффи. Приятные на ощупь белые плотные страницы. Хорошая подборка рассказов. Замечательно и остроумно. Книга небольшая, на вечер-другой, но выполнена очень приятно, если сомневаетесь, брать ли — хочу развеять ваши сомнения. Своих денег стоит.")
     }
 
 }
