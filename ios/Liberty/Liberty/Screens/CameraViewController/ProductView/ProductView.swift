@@ -30,6 +30,8 @@ final class ProductView: DesignableView {
     @IBOutlet private weak var productAuthorLabel: UILabel!
     @IBOutlet private weak var productPriceLabel: UILabel!
     @IBOutlet private weak var productDescriptionLabel: UILabel!
+    @IBOutlet private weak var rateButton: UIButton!
+    @IBOutlet private weak var retryButton: UIButton!
 
     // MARK: - UIView
 
@@ -96,6 +98,20 @@ private extension ProductView {
         productDescriptionLabel.textColor = .black
         productDescriptionLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
         productDescriptionLabel.text = nil
+    }
+
+}
+
+// MARK: - Actions
+
+private extension ProductView {
+
+    @IBAction func rateButtonDidPressed(_ sender: Any) {
+        print("rateButtonDidPressed")
+    }
+
+    @IBAction func retryButtonDidPressed(_ sender: Any) {
+        print("retryButtonDidPressed")
     }
 
 }
