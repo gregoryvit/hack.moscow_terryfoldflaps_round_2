@@ -1,0 +1,15 @@
+platform :ios, '11.0'
+
+target 'Liberty' do
+    use_frameworks!
+
+    pod 'AlamofireImage', '~> 3.2'
+    pod 'AlamofireNetworkActivityIndicator', '~> 2.1'
+    pod 'SwiftGen', '~> 5.2.1'
+    pod 'SwiftLint'
+    pod 'ObjectMapper', '~> 3.1'
+    pod 'SwiftyUserDefaults', '~> 3.0'
+    pod 'Just'
+    pod 'NVActivityIndicatorView'
+
+end
