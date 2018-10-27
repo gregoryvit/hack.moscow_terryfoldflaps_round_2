@@ -14,6 +14,7 @@ final class CameraViewController: UIViewController {
 
     @IBOutlet fileprivate weak var cameraViewPort: UIView!
 
+    fileprivate let mobileNet = LibertyModel()
     fileprivate var visionRequests = [VNRequest]()
 
     fileprivate var cameraSession: AVCaptureSession?
@@ -22,7 +23,10 @@ final class CameraViewController: UIViewController {
     fileprivate var shouldTakePhoto = false
     fileprivate var timer: Timer? = nil
 
+    var lastVector: [Double] = []
+
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureProductView()
@@ -35,6 +39,7 @@ final class CameraViewController: UIViewController {
                                      selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
 
         setupCamera()
+        configureModel()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,8 +50,24 @@ final class CameraViewController: UIViewController {
         cameraSession?.stopRunning()
     }
 
-    func configureModel() {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
+    @IBAction func printVector(_ sender: Any) {
+        print("===========================")
+        print(lastVector)
+    }
+
+
+    func configureModel() {
+        guard let visionModel = try? VNCoreMLModel(for: mobileNet.model) else {
+            print("Did not initialize the model from *.mlmodel")
+            return
+        }
+        let rq = VNCoreMLRequest(model: visionModel, completionHandler: self.handleMlRequest)
+        rq.imageCropAndScaleOption = .centerCrop
+        visionRequests = [rq]
     }
 
     func configureProductView() {
@@ -127,7 +148,10 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             }
 
             var requestOptions: [VNImageOption: Any] = [:]
-            if let cameraIntrinsicData = CMGetAttachment(sampleBuffer, key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, attachmentModeOut: nil) {
+
+            if let cameraIntrinsicData = CMGetAttachment(sampleBuffer,
+                                                         key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix,
+                                                         attachmentModeOut: nil) {
                 requestOptions = [.cameraIntrinsics: cameraIntrinsicData]
             }
 
@@ -142,7 +166,6 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             }
 
             let imageRequestHandler = VNImageRequestHandler(cgImage: cgCrop, orientation: .up, options: requestOptions)
-
             do {
                 try imageRequestHandler.perform(self.visionRequests)
             } catch {
@@ -152,7 +175,15 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
 
     func handleMlRequest(request: VNRequest, error: Error?) {
-        
+        if let _ = error {
+            return
+        }
+        guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
+            let vector = observations[0].featureValue.multiArrayValue
+            else {
+                return
+        }
+        lastVector = vector.arrayOfDoubles
+        VisualSearchEngine.searchCheck(of: lastVector)
     }
 }
-

@@ -5,6 +5,7 @@ services:
       links:
           - api:api
           - swagger:swagger
+          - jupyter:jupyter
       ports:
           - "80:80"
       volumes:
@@ -27,3 +28,11 @@ services:
         - ./docs:/var/docs
       environment:
         - SWAGGER_JSON=/var/docs/swagger.json
+  jupyter:
+      image: jupyter/scipy-notebook
+      volumes:
+        - ./visual_search:/home/jovyan/work
+      command: "start-notebook.sh --NotebookApp.password=sha1:d4598c04f6ae:a07462d1ad1d96a62b536b3ab8b9a628de850b1c"
+      environment:
+        - JUPYTER_LAB_ENABLE=yes
+        - GRANT_SUDO=yes
