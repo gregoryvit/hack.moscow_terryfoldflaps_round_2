@@ -30,7 +30,8 @@ final class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        configureProductView()
-        configurePersonView()
+//        configurePersonView()
+        configureRateView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +91,14 @@ final class CameraViewController: UIViewController {
         personView.translatesAutoresizingMaskIntoConstraints = false
         personView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         personView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+
+    func configureRateView() {
+        let rateView = StarsRateView()
+        view.addSubview(rateView)
+        rateView.translatesAutoresizingMaskIntoConstraints = false
+        rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
     func setupCamera() {
