@@ -23,6 +23,8 @@ class CameraViewController: UIViewController {
     fileprivate var shouldTakePhoto = false
     fileprivate var timer: Timer? = nil
 
+    var lastVector: [Double] = []
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -50,6 +52,12 @@ class CameraViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+
+    @IBAction func printVector(_ sender: Any) {
+        print("===========================")
+        print(lastVector)
+    }
+
 
     func configureModel() {
         guard let visionModel = try? VNCoreMLModel(for: mobileNet.model) else {
@@ -151,16 +159,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             else {
                 return
         }
-        // TODO: Do
-
-//        if let picturesData = self.picturesToFind,
-//            let hyp = VisualSearchEngine.performSearch(of: vector.arrayOfDoubles,
-//                                                       in: picturesData) {
-//            let guessVc = ArtGuessViewController.fromStoryboard()
-//            guessVc.picture = hyp.picture
-//            guessVc.modalPresentationStyle = .overCurrentContext
-//            present(guessVc, animated: true, completion: nil)
-//        }
+        lastVector = vector.arrayOfDoubles
+        VisualSearchEngine.searchCheck(of: lastVector)
     }
 }
-
