@@ -55,8 +55,9 @@ final class CameraViewController: UIViewController {
     }
 
     @IBAction func printVector(_ sender: Any) {
-        print("===========================")
-        print(lastVector)
+        NetworkManager.search(vector: lastVector)
+//        print("===========================")
+//        print(lastVector)
     }
 
 
@@ -184,6 +185,6 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 return
         }
         lastVector = vector.arrayOfDoubles
-        VisualSearchEngine.searchCheck(of: lastVector)
+//        VisualSearchEngine.searchCheck(of: lastVector)
     }
 }
