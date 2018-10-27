@@ -18,7 +18,7 @@ final class SimilarBookCellAdapter: NSObject {
 
     private struct Constants {
         static let sectionInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        static let cellSize: CGSize = CGSize(width: 137.0, height: 196.0)
+        static let cellSize: CGSize = CGSize(width: 137.0, height: 204.0)
         static let cellOffset: CGFloat = 10.0
     }
 
