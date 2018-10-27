@@ -98,7 +98,8 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    @objc fileprivate func updateTimer() {
+    @objc
+    fileprivate func updateTimer() {
         self.shouldTakePhoto = true
     }
 
@@ -163,4 +164,3 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 //        }
     }
 }
-

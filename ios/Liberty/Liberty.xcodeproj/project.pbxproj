@@ -18,6 +18,8 @@
 		7402B83D2184AAFF00C0A543 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B83B2184AAFF00C0A543 /* DetailsViewController.swift */; };
 		7402B83E2184AAFF00C0A543 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7402B83C2184AAFF00C0A543 /* DetailsViewController.xib */; };
 		7402B8412184AF1200C0A543 /* DetailsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B8402184AF1200C0A543 /* DetailsAdapter.swift */; };
+		7402B8462184B4F700C0A543 /* SoldInStoresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B8442184B4F700C0A543 /* SoldInStoresCell.swift */; };
+		7402B8472184B4F700C0A543 /* SoldInStoresCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7402B8452184B4F700C0A543 /* SoldInStoresCell.xib */; };
 		741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B45F421838B9D007FCE12 /* AppDelegate.swift */; };
 		741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741B45F821838B9D007FCE12 /* Main.storyboard */; };
 		741B45FC21838BA0007FCE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741B45FB21838BA0007FCE12 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		7402B83B2184AAFF00C0A543 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7402B83C2184AAFF00C0A543 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		7402B8402184AF1200C0A543 /* DetailsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAdapter.swift; sourceTree = "<group>"; };
+		7402B8442184B4F700C0A543 /* SoldInStoresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldInStoresCell.swift; sourceTree = "<group>"; };
+		7402B8452184B4F700C0A543 /* SoldInStoresCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoldInStoresCell.xib; sourceTree = "<group>"; };
 		741B45F121838B9D007FCE12 /* Liberty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liberty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		741B45F421838B9D007FCE12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		741B45F921838B9D007FCE12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,9 +124,27 @@
 		7402B83F2184AF0000C0A543 /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				7402B8422184B4CB00C0A543 /* Cell */,
 				7402B8402184AF1200C0A543 /* DetailsAdapter.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		7402B8422184B4CB00C0A543 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7402B8432184B4D300C0A543 /* SoldInStoresCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7402B8432184B4D300C0A543 /* SoldInStoresCell */ = {
+			isa = PBXGroup;
+			children = (
+				7402B8442184B4F700C0A543 /* SoldInStoresCell.swift */,
+				7402B8452184B4F700C0A543 /* SoldInStoresCell.xib */,
+			);
+			path = SoldInStoresCell;
 			sourceTree = "<group>";
 		};
 		741B45E821838B9D007FCE12 = {
@@ -288,6 +310,7 @@
 				741B45EE21838B9D007FCE12 /* Frameworks */,
 				741B45EF21838B9D007FCE12 /* Resources */,
 				897A63F921A346FBF9FCD615 /* [CP] Embed Pods Frameworks */,
+				7402B8482184BC6100C0A543 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -343,6 +366,7 @@
 				7402B830218495B300C0A543 /* LibertyLoader.xib in Resources */,
 				74FE011121842F59002FCE5C /* Localizable.strings in Resources */,
 				741B45FA21838B9D007FCE12 /* Main.storyboard in Resources */,
+				7402B8472184B4F700C0A543 /* SoldInStoresCell.xib in Resources */,
 				7402B8392184A93F00C0A543 /* FakeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +395,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7402B8482184BC6100C0A543 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		897A63F921A346FBF9FCD615 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -427,6 +468,7 @@
 				741B46172183A22A007FCE12 /* DesignableView.swift in Sources */,
 				7402B83D2184AAFF00C0A543 /* DetailsViewController.swift in Sources */,
 				741B45F521838B9D007FCE12 /* AppDelegate.swift in Sources */,
+				7402B8462184B4F700C0A543 /* SoldInStoresCell.swift in Sources */,
 				7402B8382184A93F00C0A543 /* FakeViewController.swift in Sources */,
 				741B461D2183A324007FCE12 /* UITableView.swift in Sources */,
 				74FE011421844451002FCE5C /* UILabel.swift in Sources */,

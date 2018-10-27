@@ -19,5 +19,5 @@ struct ColorName {
 //    static let pressState = UIColor(displayP3Red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 0.1)
 //    static let emptyProgress = UIColor(displayP3Red: 159/255.0, green: 166/255.0, blue: 171/255.0, alpha: 1.0)
 
-    static let loaderColor = UIColor(displayP3Red: 16/255.0, green: 140/255.0, blue: 255/255.0, alpha: 1)
+    static let loaderColor = UIColor(displayP3Red: 16 / 255.0, green: 140 / 255.0, blue: 255 / 255.0, alpha: 1)
 }

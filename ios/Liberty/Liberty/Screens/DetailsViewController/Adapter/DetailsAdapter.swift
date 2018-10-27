@@ -35,7 +35,7 @@ final class DetailsAdapter: NSObject {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
-//        tableView.registerNib(ChatGroupTableViewCell.self)
+        tableView.registerNib(SoldInStoresCell.self)
         self.tableView = tableView
     }
 
@@ -46,11 +46,11 @@ final class DetailsAdapter: NSObject {
 extension DetailsAdapter: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return soldInStoresCell(for: tableView, indexPath: indexPath)
     }
 
 }
@@ -58,5 +58,18 @@ extension DetailsAdapter: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension DetailsAdapter: UITableViewDelegate {
+
+}
+
+// MARK: - Private Methods
+
+private extension DetailsAdapter {
+
+    func soldInStoresCell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SoldInStoresCell.nameOfClass, for: indexPath) as? SoldInStoresCell else {
+            return UITableViewCell()
+        }
+        return cell
+    }
 
 }

@@ -23,14 +23,13 @@ class DetailsViewController: UIViewController {
     // MARK: - Private Properties
 
     private var adapter: DetailsAdapter?
-    
+
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInitialViewState()
     }
-
 
 }
 
@@ -71,5 +70,5 @@ private extension DetailsViewController {
 // MARK: - DetailsAdapterDelegate
 
 extension DetailsViewController: DetailsAdapterDelegate {
-    
+
 }
