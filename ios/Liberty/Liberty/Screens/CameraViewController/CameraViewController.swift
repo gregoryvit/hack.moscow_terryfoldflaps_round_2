@@ -30,7 +30,8 @@ final class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        configureProductView()
-        configurePersonView()
+//        configurePersonView()
+        configureRateView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +94,15 @@ final class CameraViewController: UIViewController {
         personView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
+    func configureRateView() {
+        let rateView = StarsRateView()
+        rateView.delegate = self
+        view.addSubview(rateView)
+        rateView.translatesAutoresizingMaskIntoConstraints = false
+        rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+
     func setupCamera() {
         let session = AVCaptureSession()
         session.sessionPreset = AVCaptureSession.Preset.photo
@@ -136,6 +146,14 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func retryButtonPressed() {
         print("retry button pressed")
+    }
+
+}
+
+extension CameraViewController: StarsRateViewDelegate {
+
+    func didRateProduct(rating: Double?) {
+        print("Your rating: \(rating ?? 0.0)")
     }
 
 }

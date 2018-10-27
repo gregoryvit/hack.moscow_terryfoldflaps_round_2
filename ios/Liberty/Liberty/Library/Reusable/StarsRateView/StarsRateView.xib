@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StarsRateView" customModule="Liberty" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="SwC-bb-XP7" id="zcE-Yr-Rx8"/>
+                <outlet property="rateView" destination="1qY-0W-ylk" id="bZm-9o-fIS"/>
+                <outlet property="rateViewContainer" destination="vs5-lA-khx" id="Ota-TU-Ktv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vs5-lA-khx">
+                    <rect key="frame" x="0.0" y="0.0" width="270" height="58"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SwC-bb-XP7">
+                            <rect key="frame" x="0.0" y="0.0" width="52" height="58"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="52" id="IA5-yn-foj"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="backButton"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="G5P-KE-gAZ"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-0W-ylk" customClass="CosmosView" customModule="Cosmos">
+                            <rect key="frame" x="52" y="12" width="200" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                    <real key="value" value="35"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="star_big_active"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_big"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="1qY-0W-ylk" secondAttribute="trailing" constant="18" id="7XZ-M2-wDz"/>
+                        <constraint firstAttribute="bottom" secondItem="1qY-0W-ylk" secondAttribute="bottom" constant="11" id="G7p-Wg-m4Z"/>
+                        <constraint firstItem="1qY-0W-ylk" firstAttribute="top" secondItem="vs5-lA-khx" secondAttribute="top" constant="12" id="GDA-KF-lLC"/>
+                        <constraint firstItem="SwC-bb-XP7" firstAttribute="leading" secondItem="vs5-lA-khx" secondAttribute="leading" id="GrG-cQ-8i0"/>
+                        <constraint firstAttribute="bottom" secondItem="SwC-bb-XP7" secondAttribute="bottom" id="YrM-cC-8uL"/>
+                        <constraint firstItem="1qY-0W-ylk" firstAttribute="leading" secondItem="SwC-bb-XP7" secondAttribute="trailing" id="aUJ-xj-86G"/>
+                        <constraint firstItem="SwC-bb-XP7" firstAttribute="top" secondItem="vs5-lA-khx" secondAttribute="top" id="dRj-un-Mvs"/>
+                        <constraint firstAttribute="width" constant="270" id="icb-aD-oPe"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vs5-lA-khx" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="1Uv-KT-t5o"/>
+                <constraint firstItem="vs5-lA-khx" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="S11-GX-c65"/>
+                <constraint firstItem="vs5-lA-khx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="l0M-Kj-Sai"/>
+                <constraint firstItem="vs5-lA-khx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yOQ-lH-00R"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.59999999999999" y="-116.94152923538232"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backButton" width="11" height="19"/>
+        <image name="star_big" width="34" height="32"/>
+        <image name="star_big_active" width="34" height="32"/>
+    </resources>
+</document>
