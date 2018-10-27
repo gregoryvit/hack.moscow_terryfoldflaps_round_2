@@ -57,7 +57,7 @@ final class CameraViewController: UIViewController {
     }
 
     @IBAction func printVector(_ sender: Any) {
-        NetworkManager.search(vector: lastVector)
+//        NetworkManager.search(vector: lastVector, 
 //        print("===========================")
 //        print(lastVector)
     }
