@@ -415,7 +415,7 @@ private extension CameraViewController {
 
     func openProfileDetails() {
         let profileCell: DetailsTableCellType = .person(generateOlferukPerson())
-        let socialCell: DetailsTableCellType = .social(generateSocialsNetworks(), "Социальные сети")
+        let socialCell: DetailsTableCellType = .social(generateSocialsNetworks(), "Социальные сети".localized())
         let changeProfileCell: DetailsTableCellType = .changeProfile
         openDetails(with: [profileCell, socialCell, changeProfileCell])
     }
@@ -448,7 +448,7 @@ private extension CameraViewController {
                                       name: "Alexandr Olferuk",
                                       work: "Surf Studio",
                                       position: "Data Scientist",
-                                      description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.",
+                                      description: "In the past, an iOS developer, now work with machine learning and artificial intelligence technologies.\nLead of the Voronezh AI-community, mentor of the machine learning school at VSU and Surf.\nSpeaker of the CocoaHeads community.",
                                       website: "")
     }
 
