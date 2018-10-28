@@ -9,10 +9,23 @@
 import UIKit
 import Vision
 import AVFoundation
+import AlamofireImage
 
 final class CameraViewController: UIViewController {
 
+    // MARK: - Constants
+
+    private struct Constants {
+        static let profileIconUrl: String = "https://pp.userapi.com/c844520/v844520358/eeb4b/gzMn4BnCF8w.jpg"
+    }
+
+    // MARK: - IBOutlets
+
+    @IBOutlet private weak var profileIconContainer: UIView!
+    @IBOutlet private weak var profileIconImageView: UIImageView!
     @IBOutlet private weak var cameraViewPort: UIView!
+
+    // MARK: - Properties
 
     private let mobileNet = LibertyModel()
     private var visionRequests = [VNRequest]()
@@ -37,6 +50,7 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureProfileBlock()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +58,7 @@ final class CameraViewController: UIViewController {
         createTimer()
         setupCamera()
         configureModel()
+        downloadProfileIcon()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -285,6 +300,42 @@ private extension CameraViewController {
     func createTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+
+    func configureProfileBlock() {
+        configureProfileTapGesture()
+        configureProfileIcon()
+    }
+
+    func configureProfileIcon() {
+        profileIconContainer.backgroundColor = ColorName.iconPlaceholder
+        profileIconContainer.layer.cornerRadius = profileIconContainer.frame.height / 2
+        profileIconContainer.layer.masksToBounds = true
+
+        profileIconImageView.layer.cornerRadius = profileIconImageView.frame.height / 2
+        profileIconImageView.layer.masksToBounds = true
+        profileIconImageView.contentMode = .scaleAspectFill
+    }
+
+    func configureProfileTapGesture() {
+        let profileTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfileIcon))
+        view.addGestureRecognizer(profileTapGesture)
+    }
+
+    func downloadProfileIcon() {
+        guard let iconUrl = URL(string: Constants.profileIconUrl) else { return }
+        profileIconImageView.af_setImage(withURL: iconUrl)
+    }
+
+}
+
+// MARK: - Actions
+
+private extension CameraViewController {
+
+    @objc
+    func tapProfileIcon() {
+        print("profile icon did tap")
     }
 
 }
