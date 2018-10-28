@@ -18,6 +18,8 @@ final class CameraViewController: UIViewController {
     @IBOutlet private weak var profileIconImageView: UIImageView!
     @IBOutlet private weak var cameraViewPort: UIView!
 
+    // MARK: - Properties
+
     private let mobileNet = LibertyModel()
     private var visionRequests = [VNRequest]()
 
@@ -41,6 +43,7 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureProfileBlock()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -289,6 +292,37 @@ private extension CameraViewController {
     func createTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+
+    func configureProfileBlock() {
+        configureProfileTapGesture()
+        configureProfileIcon()
+    }
+
+    func configureProfileIcon() {
+        profileIconContainer.backgroundColor = ColorName.iconPlaceholder
+        profileIconContainer.layer.cornerRadius = profileIconContainer.frame.height / 2
+        profileIconContainer.layer.masksToBounds = true
+
+        profileIconImageView.layer.cornerRadius = profileIconImageView.frame.height / 2
+        profileIconImageView.layer.masksToBounds = true
+        profileIconImageView.contentMode = .scaleAspectFill
+    }
+
+    func configureProfileTapGesture() {
+        let profileTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfileIcon))
+        view.addGestureRecognizer(profileTapGesture)
+    }
+
+}
+
+// MARK: - Actions
+
+private extension CameraViewController {
+
+    @objc
+    func tapProfileIcon() {
+        print("profile icon did tap")
     }
 
 }
