@@ -12,6 +12,10 @@ import AVFoundation
 
 final class CameraViewController: UIViewController {
 
+    // MARK: - IBOutlets
+
+    @IBOutlet private weak var profileIconContainer: UIView!
+    @IBOutlet private weak var profileIconImageView: UIImageView!
     @IBOutlet private weak var cameraViewPort: UIView!
 
     private let mobileNet = LibertyModel()
