@@ -27,7 +27,7 @@ public class Store: Mappable {
     var id: Int!
     var averagePrice: Int!
     var currecy: String!
-    var deliveryAvailable: Int!
+    var deliveryAvailable: Bool!
     var imgUrl: String!
     var lat: Float!
     var lon: Float!

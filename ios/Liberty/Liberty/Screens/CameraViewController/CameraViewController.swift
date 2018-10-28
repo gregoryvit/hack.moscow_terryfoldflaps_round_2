@@ -168,12 +168,12 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func didPressProduct() {
         guard let book = currentValue as? Book else { return }
-        print(book.title)
+        openBookDetails(for: book)
     }
 
     func didPressPerson() {
         guard let person = currentValue as? Person else { return }
-        print(person.name)
+        openPersonDetails(for: person)
     }
 
 }
@@ -285,6 +285,67 @@ private extension CameraViewController {
     func createTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+
+}
+
+// MARK: - Open Details
+
+private extension CameraViewController {
+
+    func openBookDetails(for book: Book) {
+        var cells: [DetailsTableCellType] = []
+        guard let details = book.details else {
+            openDetails(with: cells)
+            return
+        }
+        for detail in details {
+            if let stores = detail as? StoresBlock {
+                var storesModels: [StoreViewModel] = []
+                for store in stores.stores {
+                    storesModels.append(StoreViewModel(with: store))
+                }
+                cells.append(.store(storesModels, stores.title))
+            }
+            if let reviews = detail as? ReviewBlock {
+                var reviewsModels: [ReviewViewModel] = []
+                for review in reviews.review {
+                    reviewsModels.append(ReviewViewModel(with: review))
+                }
+                if let bestReview = reviewsModels.first {
+                    cells.append(.bestReview(bestReview))
+                }
+            }
+            if let books = detail as? SimilarBooksBlock {
+                var booksModels: [SimilarBookViewModel] = []
+                for book in books.books {
+                    booksModels.append(SimilarBookViewModel(with: book))
+                }
+                cells.append(.similarBooks(booksModels, books.title))
+            }
+        }
+        openDetails(with: cells)
+    }
+
+    func openPersonDetails(for person: Person) {
+
+    }
+
+    func openDetails(with cells: [DetailsTableCellType]) {
+        let detailsView = DetailsViewController()
+        detailsView.modalTransitionStyle = .coverVertical
+        detailsView.modalPresentationStyle = .overCurrentContext
+//        detailsView.onDismiss = { [weak self] in
+//            UIView.animate(withDuration: 0.3) { [weak self] in
+//                self?.blackTransparentView.alpha = 0
+//            }
+//        }
+        detailsView.configure(with: cells)
+
+        present(detailsView, animated: true, completion: nil)
+//        UIView.animate(withDuration: 0.3) { [weak self] in
+//            self?.blackTransparentView.alpha = 1
+//        }
     }
 
 }
