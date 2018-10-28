@@ -28,6 +28,18 @@ final class BookCell: UITableViewCell {
         super.awakeFromNib()
         setupInitialState()
     }
+
+    // MARK: - Configure
+
+    func configure(viewModel: ProductViewModel) {
+        ratingView.rating = Double(viewModel.productRating ?? 0)
+        bookTitle.text = viewModel.productName
+        bookAuthor.text = viewModel.productAuthor
+        searchLocationTitle.text = viewModel.productSearchLocation
+        priceTitle.text = viewModel.productPrice
+        bookDescriptionTitle.text = viewModel.productDescription
+        downloadPersonIcon(urlString: viewModel.productUrl)
+    }
     
 }
 
@@ -67,6 +79,11 @@ private extension BookCell {
         bookDescriptionTitle.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
         bookDescriptionTitle.textColor = .black
         bookDescriptionTitle.text = nil
+    }
+
+    func downloadPersonIcon(urlString: String?) {
+        guard let url = URL(string: urlString ?? "") else { return }
+        bookIconImageView.af_setImage(withURL: url)
     }
 
 }

@@ -26,7 +26,7 @@
                             <constraint firstAttribute="height" constant="102" id="dTl-8O-Q8R"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLh-tU-vBw" customClass="CosmosView" customModule="Cosmos">
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLh-tU-vBw" customClass="CosmosView" customModule="Cosmos">
                         <rect key="frame" x="102" y="29" width="102" height="18"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
