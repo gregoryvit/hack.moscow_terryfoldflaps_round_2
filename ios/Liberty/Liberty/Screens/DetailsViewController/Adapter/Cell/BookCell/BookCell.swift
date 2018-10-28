@@ -40,7 +40,7 @@ final class BookCell: UITableViewCell {
         bookDescriptionTitle.text = viewModel.productDescription
         downloadPersonIcon(urlString: viewModel.productUrl)
     }
-    
+
 }
 
 // MARK: - Configure

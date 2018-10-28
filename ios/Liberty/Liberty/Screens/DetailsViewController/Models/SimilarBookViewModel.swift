@@ -18,4 +18,10 @@ final class SimilarBookViewModel {
         self.name = name
         self.authorName = authorName
     }
+
+    init(with book: Book) {
+        self.coverImageUrl = book.imgUrl
+        self.name = book.title
+        self.authorName = book.author
+    }
 }

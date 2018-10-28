@@ -16,4 +16,9 @@ final class SocialViewModel {
         self.name = name
         self.iconUrl = iconUrl
     }
+
+    init(with social: PersonSocialNetwork) {
+        self.name = social.name
+        self.iconUrl = social.imgUrl
+    }
 }

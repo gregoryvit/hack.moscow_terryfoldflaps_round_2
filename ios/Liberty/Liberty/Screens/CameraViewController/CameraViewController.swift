@@ -24,6 +24,7 @@ final class CameraViewController: UIViewController {
     @IBOutlet private weak var profileIconContainer: UIView!
     @IBOutlet private weak var profileIconImageView: UIImageView!
     @IBOutlet private weak var cameraViewPort: UIView!
+    @IBOutlet private weak var blackTransparentView: UIView!
 
     // MARK: - Properties
 
@@ -51,6 +52,7 @@ final class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureProfileBlock()
+        configureBlackTransparentView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -129,6 +131,12 @@ final class CameraViewController: UIViewController {
         return rateView
     }
 
+    func configureBlackTransparentView() {
+        blackTransparentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        blackTransparentView.alpha = 0
+        blackTransparentView.isUserInteractionEnabled = false
+    }
+
     func setupCamera() {
         let session = AVCaptureSession()
         session.sessionPreset = AVCaptureSession.Preset.photo
@@ -183,12 +191,12 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func didPressProduct() {
         guard let book = currentValue as? Book else { return }
-        print(book.title)
+        openBookDetails(for: book)
     }
 
     func didPressPerson() {
         guard let person = currentValue as? Person else { return }
-        print(person.name)
+        openPersonDetails(for: person)
     }
 
 }
@@ -336,6 +344,90 @@ private extension CameraViewController {
     @objc
     func tapProfileIcon() {
         print("profile icon did tap")
+    }
+
+}
+
+// MARK: - Open Details
+
+private extension CameraViewController {
+
+    func openBookDetails(for book: Book) {
+        var cells: [DetailsTableCellType] = []
+        cells.append(.book(ProductViewModel(with: book)))
+        guard let details = book.details else {
+            openDetails(with: cells)
+            return
+        }
+        for detail in details {
+            if let stores = detail as? StoresBlock {
+                var storesModels: [StoreViewModel] = []
+                for store in stores.stores {
+                    storesModels.append(StoreViewModel(with: store))
+                }
+                if !storesModels.isEmpty {
+                    cells.append(.store(storesModels, stores.title))
+                }
+            }
+            if let reviews = detail as? ReviewBlock {
+                var reviewsModels: [ReviewViewModel] = []
+                for review in reviews.review {
+                    reviewsModels.append(ReviewViewModel(with: review))
+                }
+                if let bestReview = reviewsModels.first {
+                    cells.append(.bestReview(bestReview))
+                }
+            }
+            if let books = detail as? SimilarBooksBlock {
+                var booksModels: [SimilarBookViewModel] = []
+                for book in books.books {
+                    booksModels.append(SimilarBookViewModel(with: book))
+                }
+                if !booksModels.isEmpty {
+                    cells.append(.similarBooks(booksModels, books.title))
+                }
+            }
+        }
+        openDetails(with: cells)
+    }
+
+    func openPersonDetails(for person: Person) {
+        var cells: [DetailsTableCellType] = []
+        cells.append(.person(PersonDetailsViewModel(with: person)))
+        guard let details = person.details else {
+            openDetails(with: cells)
+            return
+        }
+        for detail in details {
+            if let socialNetworks = detail as? PersonSocialNetworksContainerBlock {
+                var socialsModels: [SocialViewModel] = []
+                for social in socialNetworks.socialNetworks {
+                    socialsModels.append(SocialViewModel(with: social))
+                }
+                if !socialsModels.isEmpty {
+                    cells.append(.social(socialsModels, socialNetworks.title))
+                    cells.append(.makeFriends)
+                }
+            }
+        }
+        openDetails(with: cells)
+    }
+
+    func openDetails(with cells: [DetailsTableCellType]) {
+        let detailsView = DetailsViewController()
+        detailsView.modalTransitionStyle = .coverVertical
+        detailsView.modalPresentationStyle = .overCurrentContext
+        detailsView.onDismiss = { [weak self] in
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.blackTransparentView.alpha = 0
+            }
+        }
+        detailsView.configure(with: cells)
+
+        present(detailsView, animated: true, completion: nil)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.blackTransparentView.alpha = 1
+        }
     }
 
 }
