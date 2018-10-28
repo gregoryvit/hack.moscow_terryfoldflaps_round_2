@@ -25,7 +25,7 @@ final class ReviewViewModel {
     }
 
     init(with review: Review) {
-        self.authorAvatar = nil
+        self.authorAvatar = review.imgUrl
         self.authorName = review.author
         self.reviewSource = review.source
         self.reviewText = review.summary
