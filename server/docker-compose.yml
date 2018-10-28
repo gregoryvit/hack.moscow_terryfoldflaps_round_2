@@ -16,6 +16,8 @@ services:
         - mongo:mongo
       depends_on:
         - mongo
+      volumes:
+        - ./api/data:/data
       environment:
         - DB_HOST=db
   mongo:

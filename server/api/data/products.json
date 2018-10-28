@@ -1,0 +1,144 @@
+{
+  "book/1": {
+    "id": "book/1",
+    "type": "book",
+    "title": "The Clean Coder: A Code of Conduct for Professional Programmers",
+    "author": "Robert C. Martin",
+    "average_price": 40,
+    "currency": "$",
+    "rating": 4,
+    "img_url": "https://img1.labirint.ru/books65/643363/big.jpg",
+    "details": [
+      {
+        "type": "stores",
+        "title": "In stores",
+        "stores": [
+          {
+            "id": 1,
+            "name": "Amazon",
+            "img_url": "https://images-na.ssl-images-amazon.com/images/G/01/SellerCentral/legal/amazon-logo_transparent._CB303899249_.png",
+            "url": "https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073",
+            "average_price": 37,
+            "currency": "$",
+            "lat": 42.123,
+            "lon": 32.123,
+            "delivery_available": true
+          },
+          {
+            "id": 2,
+            "name": "Ozon.ru",
+            "img_url": "https://meduza.io/image/partners/logos/000/000/043/original/ozon_logo.png",
+            "url": "https://www.ozon.ru/context/detail/id/144954705/",
+            "average_price": 549,
+            "currency": "₽",
+            "lat": 42.123,
+            "lon": 32.123,
+            "delivery_available": true
+          },
+          {
+            "id": 3,
+            "name": "Labirint",
+            "img_url": "https://offcost.ru/assets/images/resources/694/555x308/labirint-promocode.jpg",
+            "url": "https://www.labirint.ru/books/643363/",
+            "average_price": 692,
+            "currency": "₽",
+            "lat": 42.123,
+            "lon": 32.123,
+            "delivery_available": true
+          }
+        ]
+      },
+      {
+        "type": "best_review",
+        "title": "Top Review",
+        "review": [
+          {
+            "id": 1,
+            "author": "David",
+            "source": "amazon",
+            "img_url": "https://image.freepik.com/free-photo/happy-oldman-1_21194225.jpg",
+            "summary": "As with Clean Code, that other classic also by Robert C. Martin, The Clean Coder is one of these books I wish had fallen in my hands way before they did.\nThere are many other books that teach you how to write good code - that is not the purpose of this book. Rather, Uncle Bob strives to show you how to be a good professional, and all that entails. If the concept makes you want to sneer, don't - there are lots of behaviors that we'd normally do which are not professional and hurt both your company as yourself. Have you ever said \"yes\" when pressed to commit to an unreasonable deadline? Pushed half-done work through? Given overly optimistic estimations that people thought of as deadlines? Felt forced to wade through a mess of (partly) your own making? Well, even if you haven't, odds are that you will at some time, as (sadly) every developer finds themselves at such situations at some point during this career. What this book aims to do is to help you identify these situations, explain why these are harmful and provide you with the tools to better respond to these. Oh, and of course, expect the usual useful insight on how to improve your programming practices.\nWhile Clean Code was a bit hard to read sometimes and made you stop every now and then, if only to get a better grasp of the concepts, this one feels so relatable that it reads in a breeze. What more can you ask for?\nOur craft would be a lot better if every programmer was given a copy of this before they started working. Or at the very least, I am certain that this book has helped me become a better professional and I expect its teachings will continue to do so."
+          }
+        ]
+      },
+      {
+        "type": "similar_book",
+        "title": "Related books",
+        "books": [
+          {
+            "id": "book/2",
+            "type": "book",
+            "title": "Clean Architecture: A Craftsman's Guide to Software Structure and Design",
+            "author": "Robert C. Martin",
+            "average_price": 33,
+            "currency": "$",
+            "rating": 5.0,
+            "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1022268523.jpg"
+          },
+          {
+            "id": "book/3",
+            "type": "book",
+            "title": "Refactoring: Improving the Design of Existing Code",
+            "author": "Martin Fowler",
+            "average_price": 56,
+            "currency": "$",
+            "rating": 4.5,
+            "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1001826351.jpg"
+          },
+          {
+            "id": "book/4",
+            "type": "book",
+            "title": "The Pragmatic Programmer: From Journeyman to Master",
+            "author": "Andrew Hunt",
+            "average_price": 41,
+            "currency": "$",
+            "rating": 4.3,
+            "img_url": "https://ozon-st.cdn.ngenix.net/multimedia/1023533173.jpeg"
+          }
+        ]
+      }
+    ]
+  },
+  "person/1": {
+    "id": "person/1",
+    "type": "person",
+    "name": "Gregory Berngardt",
+    "company": "Surf Studio",
+    "position": "iOS lead",
+    "bio": "I'm head of iOS development team at Surf Agency where we craft mobile experiences for big brands. I've been working in startups, freelance and large outsource companies for last 6 years",
+    "website": "http://berngardt.ru",
+    "img_url": "http://2018.rifvrn.ru/uploads/users/sq/br/bd58b82754cd571fa46f32e8f2e5e431-300x300.jpg",
+    "details": [
+      {
+        "type": "person_social_networks",
+        "title": "Социальные сети",
+        "social_networks": [
+          {
+            "id": 1,
+            "name": "Twitter",
+            "img_url": "https://vignette.wikia.nocookie.net/simpsons/images/1/11/Twitter_bird_icon.png",
+            "url": "https://twitter.com/gregoryvit"
+          },
+          {
+            "id": 2,
+            "name": "Instagram",
+            "img_url": "https://vignette.wikia.nocookie.net/riverdalearchie/images/a/a5/Instagram_icon.png",
+            "url": "https://instagram.com/gregoryvit"
+          },
+          {
+            "id": 3,
+            "name": "Facebook",
+            "img_url": "http://www.transparentpng.com/thumb/facebook-logo-png/download-facebook-logo-png-18.png",
+            "url": "https://facebook.com/gregoryvit"
+          },
+          {
+            "id": 4,
+            "name": "VK",
+            "img_url": "https://cryptocurrency.tech/wp-content/uploads/2017/08/vk.png",
+            "url": "https://vk.com/gregoryvit"
+          }
+        ]
+      }
+    ]
+  }
+}
