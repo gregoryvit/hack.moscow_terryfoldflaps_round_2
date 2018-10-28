@@ -9,8 +9,15 @@
 import UIKit
 import Vision
 import AVFoundation
+import AlamofireImage
 
 final class CameraViewController: UIViewController {
+
+    // MARK: - Constants
+
+    private struct Constants {
+        static let profileIconUrl: String = "https://pp.userapi.com/c844520/v844520358/eeb4b/gzMn4BnCF8w.jpg"
+    }
 
     // MARK: - IBOutlets
 
@@ -51,6 +58,7 @@ final class CameraViewController: UIViewController {
         createTimer()
         setupCamera()
         configureModel()
+        downloadProfileIcon()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -312,6 +320,11 @@ private extension CameraViewController {
     func configureProfileTapGesture() {
         let profileTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfileIcon))
         view.addGestureRecognizer(profileTapGesture)
+    }
+
+    func downloadProfileIcon() {
+        guard let iconUrl = URL(string: Constants.profileIconUrl) else { return }
+        profileIconImageView.af_setImage(withURL: iconUrl)
     }
 
 }
