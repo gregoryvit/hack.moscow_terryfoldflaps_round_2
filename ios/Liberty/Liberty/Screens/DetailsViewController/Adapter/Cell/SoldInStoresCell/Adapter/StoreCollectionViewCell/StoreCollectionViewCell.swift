@@ -75,7 +75,7 @@ final class StoreCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with socialModel: SocialViewModel) {
-        iconImageView.contentMode = .center
+        iconImageView.contentMode = .scaleAspectFit
         priceLabel.text = socialModel.name
         descriptionLabel.text = ""
         arrowImageWidthConstraint.constant = 0
