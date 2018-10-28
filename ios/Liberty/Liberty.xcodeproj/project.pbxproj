@@ -72,6 +72,8 @@
 		804DD9352184F2C400DAE4F4 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804DD9342184F2C400DAE4F4 /* PersonViewModel.swift */; };
 		804DD9382184FA4A00DAE4F4 /* StarsRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804DD9372184FA4A00DAE4F4 /* StarsRateView.swift */; };
 		804DD93A2184FA6800DAE4F4 /* StarsRateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804DD9392184FA6800DAE4F4 /* StarsRateView.xib */; };
+		804DD93E21853A2700DAE4F4 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804DD93C21853A2700DAE4F4 /* BookCell.swift */; };
+		804DD93F21853A2700DAE4F4 /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804DD93D21853A2700DAE4F4 /* BookCell.xib */; };
 		80C7D83621849DCA00A7F494 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D83521849DCA00A7F494 /* ProductView.swift */; };
 		80C7D83821849DF600A7F494 /* ProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D83721849DF600A7F494 /* ProductView.xib */; };
 		80C7D83A2184B65600A7F494 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D8392184B65600A7F494 /* ProductViewModel.swift */; };
@@ -149,6 +151,8 @@
 		804DD9342184F2C400DAE4F4 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		804DD9372184FA4A00DAE4F4 /* StarsRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRateView.swift; sourceTree = "<group>"; };
 		804DD9392184FA6800DAE4F4 /* StarsRateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarsRateView.xib; sourceTree = "<group>"; };
+		804DD93C21853A2700DAE4F4 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		804DD93D21853A2700DAE4F4 /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
 		80C7D83521849DCA00A7F494 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		80C7D83721849DF600A7F494 /* ProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductView.xib; sourceTree = "<group>"; };
 		80C7D8392184B65600A7F494 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 		7402B8422184B4CB00C0A543 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				804DD93B218539F900DAE4F4 /* BookCell */,
 				7484F63521851FA40060C13E /* SimilarBooksCell */,
 				7484F62921850BF60060C13E /* MakeFriendsCell */,
 				7402B8582184F1C200C0A543 /* PersonCell */,
@@ -501,6 +506,15 @@
 			path = StarsRateView;
 			sourceTree = "<group>";
 		};
+		804DD93B218539F900DAE4F4 /* BookCell */ = {
+			isa = PBXGroup;
+			children = (
+				804DD93C21853A2700DAE4F4 /* BookCell.swift */,
+				804DD93D21853A2700DAE4F4 /* BookCell.xib */,
+			);
+			path = BookCell;
+			sourceTree = "<group>";
+		};
 		80C7D83221849D1300A7F494 /* CameraViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +606,7 @@
 			files = (
 				7402B83E2184AAFF00C0A543 /* DetailsViewController.xib in Resources */,
 				804DD9332184EC3900DAE4F4 /* PersonView.xib in Resources */,
+				804DD93F21853A2700DAE4F4 /* BookCell.xib in Resources */,
 				7402B84F2184C10400C0A543 /* StoreCollectionViewCell.xib in Resources */,
 				7484F62D21850C2D0060C13E /* MakeFriendsCell.xib in Resources */,
 				7484F63921851FDB0060C13E /* SimilarBooksCell.xib in Resources */,
@@ -691,6 +706,7 @@
 				74FE011F21844B06002FCE5C /* UIView.swift in Sources */,
 				6A59BDC8218491EB007F007B /* UIImage.swift in Sources */,
 				7484F62C21850C2D0060C13E /* MakeFriendsCell.swift in Sources */,
+				804DD93E21853A2700DAE4F4 /* BookCell.swift in Sources */,
 				7402B85B2184F20300C0A543 /* PersonCell.swift in Sources */,
 				7402B85E2184F68100C0A543 /* PersonDetailsViewModel.swift in Sources */,
 				7402B8552184DD0500C0A543 /* SocialViewModel.swift in Sources */,
