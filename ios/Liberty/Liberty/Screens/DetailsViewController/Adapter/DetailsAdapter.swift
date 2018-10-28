@@ -41,7 +41,8 @@ final class DetailsAdapter: NSObject {
         tableView.registerNib(MakeFriendsCell.self)
         tableView.registerNib(BestReviewCell.self)
         tableView.registerNib(SimilarBooksCell.self)
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 21, right: 0)
+        tableView.registerNib(BookCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 21, right: 0)
         self.tableView = tableView
     }
 
@@ -79,6 +80,8 @@ extension DetailsAdapter: UITableViewDataSource {
             return similarBooksCell(for: tableView, indexPath: indexPath, books: books, title: title)
         case .changeProfile:
             return changeProfileCell(for: tableView, indexPath: indexPath)
+        case .book(let book):
+            return bookCell(for: tableView, indexPath: indexPath, book: book)
         }
     }
 
@@ -151,6 +154,14 @@ private extension DetailsAdapter {
             return UITableViewCell()
         }
         cell.configure(with: "Изменить профиль".localized())
+        return cell
+    }
+
+    func bookCell(for tableView: UITableView, indexPath: IndexPath, book: ProductViewModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookCell.nameOfClass, for: indexPath) as? BookCell else {
+            return UITableViewCell()
+        }
+        cell.configure(viewModel: book)
         return cell
     }
 

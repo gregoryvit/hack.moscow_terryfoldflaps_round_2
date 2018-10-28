@@ -354,6 +354,7 @@ private extension CameraViewController {
 
     func openBookDetails(for book: Book) {
         var cells: [DetailsTableCellType] = []
+        cells.append(.book(ProductViewModel(with: book)))
         guard let details = book.details else {
             openDetails(with: cells)
             return
