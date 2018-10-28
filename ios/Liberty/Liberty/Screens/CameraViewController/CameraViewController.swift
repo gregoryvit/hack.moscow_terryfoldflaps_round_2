@@ -305,7 +305,9 @@ private extension CameraViewController {
                 for store in stores.stores {
                     storesModels.append(StoreViewModel(with: store))
                 }
-                cells.append(.store(storesModels, stores.title))
+                if !storesModels.isEmpty {
+                    cells.append(.store(storesModels, stores.title))
+                }
             }
             if let reviews = detail as? ReviewBlock {
                 var reviewsModels: [ReviewViewModel] = []
@@ -321,14 +323,34 @@ private extension CameraViewController {
                 for book in books.books {
                     booksModels.append(SimilarBookViewModel(with: book))
                 }
-                cells.append(.similarBooks(booksModels, books.title))
+                if !booksModels.isEmpty {
+                    cells.append(.similarBooks(booksModels, books.title))
+                }
             }
         }
         openDetails(with: cells)
     }
 
     func openPersonDetails(for person: Person) {
-
+        var cells: [DetailsTableCellType] = []
+        cells.append(.person(PersonDetailsViewModel(with: person)))
+        guard let details = person.details else {
+            openDetails(with: cells)
+            return
+        }
+        for detail in details {
+            if let socialNetworks = detail as? PersonSocialNetworksContainerBlock {
+                var socialsModels: [SocialViewModel] = []
+                for social in socialNetworks.socialNetworks {
+                    socialsModels.append(SocialViewModel(with: social))
+                }
+                if !socialsModels.isEmpty {
+                    cells.append(.social(socialsModels, socialNetworks.title))
+                    cells.append(.makeFriends)
+                }
+            }
+        }
+        openDetails(with: cells)
     }
 
     func openDetails(with cells: [DetailsTableCellType]) {

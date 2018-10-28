@@ -22,6 +22,8 @@ public class Block: StaticMappable {
                 return ReviewBlock(map: map)
             case "similar_book":
                 return SimilarBooksBlock(map: map)
+            case "person_social_networks":
+                return PersonSocialNetworksContainerBlock(map: map)
             default:
                 return Block()
             }
