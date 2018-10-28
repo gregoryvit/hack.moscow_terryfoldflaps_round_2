@@ -25,4 +25,13 @@ final class StoreViewModel {
         self.position = position
         self.deliveryAvailable = deliveryAvailable
     }
+
+    init(with store: Store) {
+        self.id = String(store.id)
+        self.name = store.name
+        self.iconUrl = store.imgUrl
+        self.price = String(store.averagePrice) + " " + store.currecy
+        self.position = CLLocationCoordinate2D(latitude: Double(store.lat), longitude: Double(store.lon))
+        self.deliveryAvailable = store.deliveryAvailable
+    }
 }

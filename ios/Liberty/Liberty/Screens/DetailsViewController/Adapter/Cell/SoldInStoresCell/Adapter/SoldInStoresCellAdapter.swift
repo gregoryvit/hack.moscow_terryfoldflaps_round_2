@@ -23,7 +23,6 @@ final class SoldInStoresCellAdapter: NSObject {
     // MARK: - Constants
 
     private struct Constants {
-        static let estimatedCellHeight: CGFloat = 80
         static let sectionInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         static let cellSize: CGSize = CGSize(width: 94.0, height: 108.0)
         static let cellOffset: CGFloat = 10.0
@@ -101,7 +100,7 @@ extension SoldInStoresCellAdapter: UICollectionViewDataSource {
 extension SoldInStoresCellAdapter: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             collectionView.deselectItem(at: indexPath, animated: true)
         }
     }

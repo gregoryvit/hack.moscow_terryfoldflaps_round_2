@@ -9,19 +9,41 @@
 import UIKit
 import Vision
 import AVFoundation
+import AlamofireImage
 
 final class CameraViewController: UIViewController {
 
-    @IBOutlet fileprivate weak var cameraViewPort: UIView!
+    // MARK: - Constants
 
-    fileprivate let mobileNet = LibertyModel()
-    fileprivate var visionRequests = [VNRequest]()
+    private struct Constants {
+        static let profileIconUrl: String = "https://pp.userapi.com/c844520/v844520358/eeb4b/gzMn4BnCF8w.jpg"
+    }
 
-    fileprivate var cameraSession: AVCaptureSession?
-    fileprivate var videoLayer: AVCaptureVideoPreviewLayer?
+    // MARK: - IBOutlets
 
-    fileprivate var shouldTakePhoto = false
-    fileprivate var timer: Timer? = nil
+    @IBOutlet private weak var profileIconContainer: UIView!
+    @IBOutlet private weak var profileIconImageView: UIImageView!
+    @IBOutlet private weak var cameraViewPort: UIView!
+    @IBOutlet private weak var blackTransparentView: UIView!
+
+    // MARK: - Properties
+
+    private let mobileNet = LibertyModel()
+    private var visionRequests = [VNRequest]()
+
+    private var cameraSession: AVCaptureSession?
+    private var videoLayer: AVCaptureVideoPreviewLayer?
+
+    private var shouldTakePhoto = false
+    private var timer: Timer? = nil
+
+    private var currentItemView: UIView?
+    private var currentRateView: StarsRateView?
+    private var currentRating: Double?
+    private var currentValue: Any?
+    private var isItemActive: Bool {
+        return currentItemView != nil
+    }
 
     var lastVector: [Double] = []
 
@@ -29,19 +51,16 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureProductView()
-//        configurePersonView()
-        configureRateView()
+        configureProfileBlock()
+        configureBlackTransparentView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                     selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
-
+        createTimer()
         setupCamera()
         configureModel()
+        downloadProfileIcon()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,12 +75,6 @@ final class CameraViewController: UIViewController {
         return .lightContent
     }
 
-    @IBAction func printVector(_ sender: Any) {
-        NetworkManager.search(vector: lastVector)
-//        print("===========================")
-//        print(lastVector)
-    }
-
     func configureModel() {
         guard let visionModel = try? VNCoreMLModel(for: mobileNet.model) else {
             print("Did not initialize the model from *.mlmodel")
@@ -72,35 +85,56 @@ final class CameraViewController: UIViewController {
         visionRequests = [rq]
     }
 
-    func configureProductView() {
-        let viewModel = ProductViewModel(productName: "Санина индахаус продакшен представляет для вас наш проект", productAuthor: "Влад Крупенько", productPrice: "2 465 ₽", productDescription: "средняя цена", productRating: 4)
+    func configureProductView(book: Book) {
+        clearCurrentPresentedView()
+        let viewModel = ProductViewModel(with: book)
         let productView = ProductView()
         productView.configure(viewModel: viewModel)
         productView.delegate = self
+        currentItemView = productView
+        productView.alpha = 0.0
         view.addSubview(productView)
+        UIView.animate(withDuration: 0.3) {
+            productView.alpha = 1.0
+        }
         productView.translatesAutoresizingMaskIntoConstraints = false
         productView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         productView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
-    func configurePersonView() {
-        let viewModel = PersonViewModel(personName: "Grigory Berngardt", personPosition: "iOS Lead", personIconUrl: "https://pp.userapi.com/c638619/v638619546/510ff/dzyIBJ927_s.jpg")
+    func configurePersonView(person: Person) {
+        clearCurrentPresentedView()
+        let viewModel = PersonViewModel(with: person)
         let personView = PersonView()
         personView.configure(viewModel: viewModel)
         personView.delegate = self
+        personView.alpha = 0.0
+        currentItemView = personView
         view.addSubview(personView)
+        UIView.animate(withDuration: 0.3) {
+            personView.alpha = 1.0
+        }
         personView.translatesAutoresizingMaskIntoConstraints = false
         personView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         personView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
-    func configureRateView() {
+    func configureRateView() -> StarsRateView {
         let rateView = StarsRateView()
         rateView.delegate = self
+        rateView.configure(rating: currentRating)
         view.addSubview(rateView)
+        let offset = UIScreen.main.bounds.width
         rateView.translatesAutoresizingMaskIntoConstraints = false
-        rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -95).isActive = true
+        rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset).isActive = true
+        return rateView
+    }
+
+    func configureBlackTransparentView() {
+        blackTransparentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        blackTransparentView.alpha = 0
+        blackTransparentView.isUserInteractionEnabled = false
     }
 
     func setupCamera() {
@@ -127,7 +161,8 @@ final class CameraViewController: UIViewController {
 
         self.cameraSession = session
 
-        DispatchQueue.main.async { [unowned self] in
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
             let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
             videoPreviewLayer.videoGravity = .resizeAspectFill
             videoPreviewLayer.frame = self.cameraViewPort.layer.bounds
@@ -141,11 +176,27 @@ final class CameraViewController: UIViewController {
 extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 
     func rateButtonPressed() {
-        print("rate button pressed")
+        currentRateView = configureRateView()
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let `self` = self else { return }
+            let offset = UIScreen.main.bounds.width
+            self.currentItemView?.transform = CGAffineTransform(translationX: -offset, y: 0.0)
+            self.currentRateView?.transform = CGAffineTransform(translationX: -offset, y: 0.0)
+        }
     }
 
     func retryButtonPressed() {
-        print("retry button pressed")
+        clearCurrentPresentedView()
+    }
+
+    func didPressProduct() {
+        guard let book = currentValue as? Book else { return }
+        openBookDetails(for: book)
+    }
+
+    func didPressPerson() {
+        guard let person = currentValue as? Person else { return }
+        openPersonDetails(for: person)
     }
 
 }
@@ -153,7 +204,13 @@ extension CameraViewController: ProductViewDelegate, PersonViewDelegate {
 extension CameraViewController: StarsRateViewDelegate {
 
     func didRateProduct(rating: Double?) {
-        print("Your rating: \(rating ?? 0.0)")
+        currentRating = rating != nil ? rating : currentRating
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let `self` = self else { return }
+            let offset = UIScreen.main.bounds.width
+            self.currentItemView?.transform = CGAffineTransform(translationX: 0.0, y: 0.0)
+            self.currentRateView?.transform = CGAffineTransform(translationX: offset, y: 0.0)
+        }
     }
 
 }
@@ -162,7 +219,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @objc
     fileprivate func updateTimer() {
-        self.shouldTakePhoto = true
+        self.shouldTakePhoto = !isItemActive
     }
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -205,8 +262,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
     }
 
-    func handleMlRequest(request: VNRequest, error: Error?) {
-        if let _ = error {
+    func handleMlRequest(request: VNRequest, error: Error?) {        if let _ = error {
             return
         }
         guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
@@ -215,6 +271,192 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 return
         }
         lastVector = vector.arrayOfDoubles
-//        VisualSearchEngine.searchCheck(of: lastVector)
+        startSearchRequest(vector: lastVector)
     }
+
+    func startSearchRequest(vector: [Double]) {
+        VisualSearchEngine.searchCheck(of: vector)
+        NetworkManager.search(vector: lastVector) { [weak self] (result) in
+            guard let `self` = self else { return }
+            self.currentValue = result
+            if let book = result as? Book {
+                self.configureProductView(book: book)
+            } else if let person = result as? Person {
+                self.configurePersonView(person: person)
+            }
+        }
+    }
+
+}
+
+// MARK: - Help Methods
+
+private extension CameraViewController {
+
+    func clearCurrentPresentedView() {
+        guard let currentView = currentItemView else { return }
+        UIView.animate(withDuration: 0.3, animations: {
+            currentView.alpha = 0.0
+        }) { [weak self] (_) in
+            currentView.removeFromSuperview()
+            self?.currentItemView = nil
+            self?.currentRating = nil
+            self?.currentRateView = nil
+        }
+    }
+
+    func createTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(CameraViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+
+    func configureProfileBlock() {
+        configureProfileTapGesture()
+        configureProfileIcon()
+    }
+
+    func configureProfileIcon() {
+        profileIconContainer.backgroundColor = ColorName.iconPlaceholder
+        profileIconContainer.layer.cornerRadius = profileIconContainer.frame.height / 2
+        profileIconContainer.layer.masksToBounds = true
+
+        profileIconImageView.layer.cornerRadius = profileIconImageView.frame.height / 2
+        profileIconImageView.layer.masksToBounds = true
+        profileIconImageView.contentMode = .scaleAspectFill
+    }
+
+    func configureProfileTapGesture() {
+        let profileTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfileIcon))
+        profileIconContainer.addGestureRecognizer(profileTapGesture)
+    }
+
+    func downloadProfileIcon() {
+        guard let iconUrl = URL(string: Constants.profileIconUrl) else { return }
+        profileIconImageView.af_setImage(withURL: iconUrl)
+    }
+
+}
+
+// MARK: - Actions
+
+private extension CameraViewController {
+
+    @objc
+    func tapProfileIcon() {
+        openProfileDetails()
+    }
+
+}
+
+// MARK: - Open Details
+
+private extension CameraViewController {
+
+    func openBookDetails(for book: Book) {
+        var cells: [DetailsTableCellType] = []
+        cells.append(.book(ProductViewModel(with: book)))
+        guard let details = book.details else {
+            openDetails(with: cells)
+            return
+        }
+        for detail in details {
+            if let stores = detail as? StoresBlock {
+                var storesModels: [StoreViewModel] = []
+                for store in stores.stores {
+                    storesModels.append(StoreViewModel(with: store))
+                }
+                if !storesModels.isEmpty {
+                    cells.append(.store(storesModels, stores.title))
+                }
+            }
+            if let reviews = detail as? ReviewBlock {
+                var reviewsModels: [ReviewViewModel] = []
+                for review in reviews.review {
+                    reviewsModels.append(ReviewViewModel(with: review))
+                }
+                if let bestReview = reviewsModels.first {
+                    cells.append(.bestReview(bestReview))
+                }
+            }
+            if let books = detail as? SimilarBooksBlock {
+                var booksModels: [SimilarBookViewModel] = []
+                for book in books.books {
+                    booksModels.append(SimilarBookViewModel(with: book))
+                }
+                if !booksModels.isEmpty {
+                    cells.append(.similarBooks(booksModels, books.title))
+                }
+            }
+        }
+        openDetails(with: cells)
+    }
+
+    func openPersonDetails(for person: Person) {
+        var cells: [DetailsTableCellType] = []
+        cells.append(.person(PersonDetailsViewModel(with: person)))
+        guard let details = person.details else {
+            openDetails(with: cells)
+            return
+        }
+        for detail in details {
+            if let socialNetworks = detail as? PersonSocialNetworksContainerBlock {
+                var socialsModels: [SocialViewModel] = []
+                for social in socialNetworks.socialNetworks {
+                    socialsModels.append(SocialViewModel(with: social))
+                }
+                if !socialsModels.isEmpty {
+                    cells.append(.social(socialsModels, socialNetworks.title))
+                    cells.append(.makeFriends)
+                }
+            }
+        }
+        openDetails(with: cells)
+    }
+
+    func openProfileDetails() {
+        let profileCell: DetailsTableCellType = .person(generateOlferukPerson())
+        let socialCell: DetailsTableCellType = .social(generateSocialsNetworks(), "Социальные сети")
+        let changeProfileCell: DetailsTableCellType = .changeProfile
+        openDetails(with: [profileCell, socialCell, changeProfileCell])
+    }
+
+    func openDetails(with cells: [DetailsTableCellType]) {
+        let detailsView = DetailsViewController()
+        detailsView.modalTransitionStyle = .coverVertical
+        detailsView.modalPresentationStyle = .overCurrentContext
+        detailsView.onDismiss = { [weak self] in
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.blackTransparentView.alpha = 0
+            }
+        }
+        detailsView.configure(with: cells)
+
+        present(detailsView, animated: true, completion: nil)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.blackTransparentView.alpha = 1
+        }
+    }
+
+}
+
+// MARK: - Generate Olferuk Data
+
+private extension CameraViewController {
+
+    func generateOlferukPerson() -> PersonDetailsViewModel {
+        return PersonDetailsViewModel(avatarUrl: Constants.profileIconUrl,
+                                      name: "Александр Ольферук",
+                                      work: "Surf Studio",
+                                      position: "Data Scientist",
+                                      description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.",
+                                      website: "")
+    }
+
+    func generateSocialsNetworks() -> [SocialViewModel] {
+        let twitter = SocialViewModel(name: "Twitter", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b54/TnEfxqSiPhs.jpg")
+        let insta = SocialViewModel(name: "Instagram", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b46/gRJwvj69hMM.jpg")
+        let vk = SocialViewModel(name: "Vk", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b5b/xtCAzOXxMEg.jpg")
+        return [twitter, insta, vk]
+    }
+
 }

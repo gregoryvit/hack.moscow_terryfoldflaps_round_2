@@ -9,7 +9,6 @@
 import Foundation
 import ObjectMapper
 
-
 public class StoresBlock: Block {
     var stores: [Store]!
     var title: String!
@@ -28,7 +27,7 @@ public class Store: Mappable {
     var id: Int!
     var averagePrice: Int!
     var currecy: String!
-    var deliveryAvailable: Int!
+    var deliveryAvailable: Bool!
     var imgUrl: String!
     var lat: Float!
     var lon: Float!

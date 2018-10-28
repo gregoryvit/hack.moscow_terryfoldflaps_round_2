@@ -12,4 +12,9 @@ enum DetailsTableCellType {
     case store([StoreViewModel], String)
     case social([SocialViewModel], String)
     case person(PersonDetailsViewModel)
+    case makeFriends
+    case bestReview(ReviewViewModel)
+    case similarBooks([SimilarBookViewModel], String)
+    case changeProfile
+    case book(ProductViewModel)
 }

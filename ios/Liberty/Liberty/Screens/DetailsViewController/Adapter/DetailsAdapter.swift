@@ -38,7 +38,11 @@ final class DetailsAdapter: NSObject {
         tableView.estimatedRowHeight = Constants.estimatedCellHeight
         tableView.registerNib(SoldInStoresCell.self)
         tableView.registerNib(PersonCell.self)
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 21, right: 0)
+        tableView.registerNib(MakeFriendsCell.self)
+        tableView.registerNib(BestReviewCell.self)
+        tableView.registerNib(SimilarBooksCell.self)
+        tableView.registerNib(BookCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 21, right: 0)
         self.tableView = tableView
     }
 
@@ -68,6 +72,16 @@ extension DetailsAdapter: UITableViewDataSource {
             return soldInStoresCell(for: tableView, indexPath: indexPath, socials: socials, title: title)
         case .person(let person):
             return personCell(for: tableView, indexPath: indexPath, person: person)
+        case .makeFriends:
+            return makeFriendsCell(for: tableView, indexPath: indexPath)
+        case .bestReview(let review):
+            return bestReviewCell(for: tableView, indexPath: indexPath, review: review)
+        case .similarBooks(let books, let title):
+            return similarBooksCell(for: tableView, indexPath: indexPath, books: books, title: title)
+        case .changeProfile:
+            return changeProfileCell(for: tableView, indexPath: indexPath)
+        case .book(let book):
+            return bookCell(for: tableView, indexPath: indexPath, book: book)
         }
     }
 
@@ -108,6 +122,46 @@ private extension DetailsAdapter {
             return UITableViewCell()
         }
         cell.configure(with: person)
+        return cell
+    }
+
+    func makeFriendsCell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MakeFriendsCell.nameOfClass, for: indexPath) as? MakeFriendsCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: "Подружиться во всех соцсетях".localized())
+        return cell
+    }
+
+    func bestReviewCell(for tableView: UITableView, indexPath: IndexPath, review: ReviewViewModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BestReviewCell.nameOfClass, for: indexPath) as? BestReviewCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: review)
+        return cell
+    }
+
+    func similarBooksCell(for tableView: UITableView, indexPath: IndexPath, books: [SimilarBookViewModel], title: String) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SimilarBooksCell.nameOfClass, for: indexPath) as? SimilarBooksCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: books, title: title)
+        return cell
+    }
+
+    func changeProfileCell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MakeFriendsCell.nameOfClass, for: indexPath) as? MakeFriendsCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: "Изменить профиль".localized())
+        return cell
+    }
+
+    func bookCell(for tableView: UITableView, indexPath: IndexPath, book: ProductViewModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookCell.nameOfClass, for: indexPath) as? BookCell else {
+            return UITableViewCell()
+        }
+        cell.configure(viewModel: book)
         return cell
     }
 

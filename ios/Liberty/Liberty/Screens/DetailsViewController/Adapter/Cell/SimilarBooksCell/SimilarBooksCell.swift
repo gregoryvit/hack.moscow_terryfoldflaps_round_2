@@ -1,14 +1,14 @@
 //
-//  SoldInStoresCell.swift
+//  SimilarBooksCell.swift
 //  Liberty
 //
-//  Created by Vlad Krupenko on 27/10/2018.
+//  Created by Vlad Krupenko on 28/10/2018.
 //  Copyright © 2018 Olferuk. All rights reserved.
 //
 
 import UIKit
 
-final class SoldInStoresCell: UITableViewCell {
+class SimilarBooksCell: UITableViewCell {
 
     // MARK: - IBOutlets
 
@@ -17,7 +17,7 @@ final class SoldInStoresCell: UITableViewCell {
 
     // MARK: - Private Properties
 
-    private var adapter: SoldInStoresCellAdapter?
+    private var adapter: SimilarBookCellAdapter?
 
     // MARK: - UITableViewCell
 
@@ -28,13 +28,8 @@ final class SoldInStoresCell: UITableViewCell {
 
     // MARK: - Internal Methods
 
-    func configure(with stores: [StoreViewModel], title: String) {
-        adapter?.configure(with: stores)
-        titleLabel.text = title
-    }
-
-    func configure(with socials: [SocialViewModel], title: String) {
-        adapter?.configure(with: socials)
+    func configure(with books: [SimilarBookViewModel], title: String) {
+        adapter?.configure(with: books)
         titleLabel.text = title
     }
 
@@ -42,7 +37,7 @@ final class SoldInStoresCell: UITableViewCell {
 
 // MARK: - Configure
 
-private extension SoldInStoresCell {
+private extension SimilarBooksCell {
 
     func setupInitialState() {
         configureTitleLabel()
@@ -55,7 +50,7 @@ private extension SoldInStoresCell {
     }
 
     func configureAdapter() {
-        adapter = SoldInStoresCellAdapter(for: collectionView)
+        adapter = SimilarBookCellAdapter(for: collectionView)
         adapter?.delegate = self
         collectionView.dataSource = adapter
         collectionView.delegate = adapter
@@ -63,8 +58,5 @@ private extension SoldInStoresCell {
 
 }
 
-// MARK: - SoldInStoresCellAdapterDelegate
-
-extension SoldInStoresCell: SoldInStoresCellAdapterDelegate {
-
+extension SimilarBooksCell: SimilarBookCellAdapterDelegate {
 }

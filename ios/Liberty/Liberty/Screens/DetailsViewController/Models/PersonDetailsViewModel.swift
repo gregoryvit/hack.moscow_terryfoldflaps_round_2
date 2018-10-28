@@ -29,4 +29,13 @@ final class PersonDetailsViewModel {
         self.description = description
         self.website = website
     }
+
+    init(with person: Person) {
+        self.avatarUrl = person.imgUrl
+        self.name = person.name
+        self.work = person.company
+        self.position = person.position
+        self.description = person.bio
+        self.website = person.website
+    }
 }

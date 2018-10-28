@@ -11,6 +11,7 @@ import AlamofireImage
 
 protocol PersonViewDelegate: class {
     func retryButtonPressed()
+    func didPressPerson()
 }
 
 final class PersonView: DesignableView {
@@ -73,6 +74,7 @@ private extension PersonView {
         configureContainerView()
         configureLabels()
         configureImageView()
+        configureTapGesture()
     }
 
     func configureContainerView() {
@@ -106,6 +108,11 @@ private extension PersonView {
         personIconContainer.layer.masksToBounds = true
     }
 
+    func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        addGestureRecognizer(tapGesture)
+    }
+
 }
 
 // MARK: - Help Methods
@@ -125,6 +132,11 @@ private extension PersonView {
 
     @IBAction func retryButtonDidPressed(_ sender: Any) {
         delegate?.retryButtonPressed()
+    }
+
+    @objc
+    func didTap() {
+        delegate?.didPressPerson()
     }
 
 }

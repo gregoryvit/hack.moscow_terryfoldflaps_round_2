@@ -14,6 +14,7 @@ public class Review: Mappable {
     var author: String!
     var source: String!
     var summary: String!
+    var imgUrl: String!
 
     public required init?(map: Map) {
 
@@ -24,6 +25,7 @@ public class Review: Mappable {
         author <- map["author"]
         source <- map["source"]
         summary <- map["summary"]
+        imgUrl <- map["img_url"]
     }
 }
 

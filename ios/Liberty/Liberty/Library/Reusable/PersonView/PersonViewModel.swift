@@ -24,4 +24,10 @@ final class PersonViewModel {
         self.personIconUrl = personIconUrl
     }
 
+    init(with person: Person) {
+        self.personName = person.name
+        self.personPosition = person.position
+        self.personIconUrl = person.imgUrl
+    }
+
 }
