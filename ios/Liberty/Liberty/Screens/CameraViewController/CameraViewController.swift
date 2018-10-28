@@ -13,6 +13,7 @@ import AVFoundation
 final class CameraViewController: UIViewController {
 
     @IBOutlet private weak var cameraViewPort: UIView!
+    @IBOutlet private weak var blackTransparentView: UIView!
 
     private let mobileNet = LibertyModel()
     private var visionRequests = [VNRequest]()
@@ -37,6 +38,7 @@ final class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBlackTransparentView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +114,12 @@ final class CameraViewController: UIViewController {
         rateView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -95).isActive = true
         rateView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset).isActive = true
         return rateView
+    }
+
+    func configureBlackTransparentView() {
+        blackTransparentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        blackTransparentView.alpha = 0
+        blackTransparentView.isUserInteractionEnabled = false
     }
 
     func setupCamera() {
@@ -357,17 +365,17 @@ private extension CameraViewController {
         let detailsView = DetailsViewController()
         detailsView.modalTransitionStyle = .coverVertical
         detailsView.modalPresentationStyle = .overCurrentContext
-//        detailsView.onDismiss = { [weak self] in
-//            UIView.animate(withDuration: 0.3) { [weak self] in
-//                self?.blackTransparentView.alpha = 0
-//            }
-//        }
+        detailsView.onDismiss = { [weak self] in
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.blackTransparentView.alpha = 0
+            }
+        }
         detailsView.configure(with: cells)
 
         present(detailsView, animated: true, completion: nil)
-//        UIView.animate(withDuration: 0.3) { [weak self] in
-//            self?.blackTransparentView.alpha = 1
-//        }
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.blackTransparentView.alpha = 1
+        }
     }
 
 }

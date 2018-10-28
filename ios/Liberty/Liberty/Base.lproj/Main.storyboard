@@ -22,17 +22,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsS-XE-E9g">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="adZ-mR-fUj" firstAttribute="trailing" secondItem="FsS-XE-E9g" secondAttribute="trailing" id="6yV-Nq-Vnp"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="top" secondItem="q4U-0Q-6x2" secondAttribute="top" id="94R-2R-V8P"/>
+                            <constraint firstItem="FsS-XE-E9g" firstAttribute="leading" secondItem="adZ-mR-fUj" secondAttribute="leading" id="Kzu-EP-iX1"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="leading" secondItem="adZ-mR-fUj" secondAttribute="leading" id="Oe5-5Y-af2"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="bottom" secondItem="adZ-mR-fUj" secondAttribute="bottom" id="PEd-d6-otz"/>
                             <constraint firstItem="6BO-TT-2yN" firstAttribute="trailing" secondItem="adZ-mR-fUj" secondAttribute="trailing" id="kqC-e3-nLD"/>
+                            <constraint firstItem="FsS-XE-E9g" firstAttribute="top" secondItem="q4U-0Q-6x2" secondAttribute="top" id="uJP-wJ-aby"/>
+                            <constraint firstAttribute="bottom" secondItem="FsS-XE-E9g" secondAttribute="bottom" id="vSV-9a-4Xh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="adZ-mR-fUj"/>
                     </view>
                     <connections>
+                        <outlet property="blackTransparentView" destination="FsS-XE-E9g" id="Nb0-A9-VEx"/>
                         <outlet property="cameraViewPort" destination="6BO-TT-2yN" id="hut-J6-c2R"/>
                     </connections>
                 </viewController>
