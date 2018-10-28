@@ -327,7 +327,7 @@ private extension CameraViewController {
 
     func configureProfileTapGesture() {
         let profileTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfileIcon))
-        view.addGestureRecognizer(profileTapGesture)
+        profileIconContainer.addGestureRecognizer(profileTapGesture)
     }
 
     func downloadProfileIcon() {
