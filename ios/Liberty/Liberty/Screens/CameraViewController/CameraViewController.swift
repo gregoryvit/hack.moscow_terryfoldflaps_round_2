@@ -343,7 +343,7 @@ private extension CameraViewController {
 
     @objc
     func tapProfileIcon() {
-        print("profile icon did tap")
+        openProfileDetails()
     }
 
 }
@@ -413,6 +413,13 @@ private extension CameraViewController {
         openDetails(with: cells)
     }
 
+    func openProfileDetails() {
+        let profileCell: DetailsTableCellType = .person(generateOlferukPerson())
+        let socialCell: DetailsTableCellType = .social(generateSocialsNetworks(), "Социальные сети")
+        let changeProfileCell: DetailsTableCellType = .changeProfile
+        openDetails(with: [profileCell, socialCell, changeProfileCell])
+    }
+
     func openDetails(with cells: [DetailsTableCellType]) {
         let detailsView = DetailsViewController()
         detailsView.modalTransitionStyle = .coverVertical
@@ -428,6 +435,28 @@ private extension CameraViewController {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.blackTransparentView.alpha = 1
         }
+    }
+
+}
+
+// MARK: - Generate Olferuk Data
+
+private extension CameraViewController {
+
+    func generateOlferukPerson() -> PersonDetailsViewModel {
+        return PersonDetailsViewModel(avatarUrl: Constants.profileIconUrl,
+                                      name: "Александр Ольферук",
+                                      work: "Surf Studio",
+                                      position: "Data Scientist",
+                                      description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.",
+                                      website: "")
+    }
+
+    func generateSocialsNetworks() -> [SocialViewModel] {
+        let twitter = SocialViewModel(name: "Twitter", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b54/TnEfxqSiPhs.jpg")
+        let insta = SocialViewModel(name: "Instagram", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b46/gRJwvj69hMM.jpg")
+        let vk = SocialViewModel(name: "Vk", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b5b/xtCAzOXxMEg.jpg")
+        return [twitter, insta, vk]
     }
 
 }
