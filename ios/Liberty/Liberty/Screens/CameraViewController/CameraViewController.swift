@@ -415,7 +415,7 @@ private extension CameraViewController {
 
     func openProfileDetails() {
         let profileCell: DetailsTableCellType = .person(generateOlferukPerson())
-        let socialCell: DetailsTableCellType = .social(generateSocialsNetworks(), "Социальные сети")
+        let socialCell: DetailsTableCellType = .social(generateSocialsNetworks(), "Социальные сети".localized())
         let changeProfileCell: DetailsTableCellType = .changeProfile
         openDetails(with: [profileCell, socialCell, changeProfileCell])
     }
@@ -445,17 +445,17 @@ private extension CameraViewController {
 
     func generateOlferukPerson() -> PersonDetailsViewModel {
         return PersonDetailsViewModel(avatarUrl: Constants.profileIconUrl,
-                                      name: "Александр Ольферук",
+                                      name: "Alexandr Olferuk",
                                       work: "Surf Studio",
                                       position: "Data Scientist",
-                                      description: "Занимаюсь iOS разработкой последние 6 лет. За это время поработал с большим кол-вом проектов в разного рода компаниях, стартапах, фрилансе и крупных аутсорсинговых компаниях. Сейчас возглавляю отдел iOS разработки в небольшой, но классной студии Surf.",
+                                      description: "In the past, an iOS developer, now work with machine learning and artificial intelligence technologies.\nLead of the Voronezh AI-community, mentor of the machine learning school at VSU and Surf.\nSpeaker of the CocoaHeads community.",
                                       website: "")
     }
 
     func generateSocialsNetworks() -> [SocialViewModel] {
-        let twitter = SocialViewModel(name: "Twitter", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b54/TnEfxqSiPhs.jpg")
-        let insta = SocialViewModel(name: "Instagram", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b46/gRJwvj69hMM.jpg")
-        let vk = SocialViewModel(name: "Vk", iconUrl: "https://pp.userapi.com/c849036/v849036177/a7b5b/xtCAzOXxMEg.jpg")
+        let twitter = SocialViewModel(name: "Twitter", iconUrl: "https://vignette.wikia.nocookie.net/simpsons/images/1/11/Twitter_bird_icon.png")
+        let insta = SocialViewModel(name: "Instagram", iconUrl: "https://vignette.wikia.nocookie.net/riverdalearchie/images/a/a5/Instagram_icon.png")
+        let vk = SocialViewModel(name: "Vk", iconUrl: "https://cryptocurrency.tech/wp-content/uploads/2017/08/vk.png")
         return [twitter, insta, vk]
     }
 
